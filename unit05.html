@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 05: The After-Event Afterparty! / 打ち上げに行こう！</title>
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #10ac84;
+            --text-color: #2c3e50;
+            --bg-color: #f7fbf9;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", "Helvetica", "Arial", "LiHei Pro", "Medium", "Microsoft JhengHei";
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 { color: var(--secondary-color); margin-bottom: 5px; }
+        h2 { color: var(--primary-color); font-size: 1.2rem; margin-top: 0; }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 2px solid var(--secondary-color);
+            background-color: transparent;
+            color: var(--secondary-color);
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .audio-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #e1f7d5;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .play-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .play-btn:hover { opacity: 0.9; }
+
+        .dialogue-box {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fafafa;
+            margin-bottom: 25px;
+        }
+
+        .dialogue-line {
+            margin-bottom: 18px;
+            border-left: 4px solid #ddd;
+            padding-left: 15px;
+        }
+
+        .dialogue-line.highlight {
+            border-left-color: var(--primary-color);
+        }
+
+        .speaker {
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .translation {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th { background-color: #e1f7d5; color: var(--text-color); }
+
+        @media (max-width: 600px) {
+            th, td { padding: 8px; font-size: 0.9rem; }
+            .tab-btn { padding: 8px 15px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Unit 05: The After-Event Afterparty!</h1>
+        <h2>邀請新朋友共進慶功宴、品嚐名古屋在地名物美食（3-5分鐘精實特輯）</h2>
+    </header>
+
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchLanguage('en')">English Version</button>
+        <button class="tab-btn" onclick="switchLanguage('ja')">日本語セクション</button>
+    </div>
+
+    <!-- ================= 英文版頁面 ================= -->
+    <div id="section-en" class="content-section active">
+        <div class="audio-control">
+            <span>🔊 課文朗讀 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('en')">播放完整英文對話</button>
+        </div>
+
+        <h3>🗣️ Full Dialogue: Organizing an Afterparty (Izakaya Dining)</h3>
+        <div class="dialogue-box" id="text-en">
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Whew! What a long day. The World Cosplay Summit parade at Osu Kannon was absolutely legendary, but the summer heat completely drained my batteries. Hey Sora, since you have successfully wrapped up your schedule and changed back into casual clothes, do you have any plans for tonight?
+                <div class="translation">（呼！真是漫長的一天。大須觀音的世界 Cosplay 高峰會遊行簡直是傳奇級的精采，但夏天的熱浪完全把我的體力耗盡了。嘿 Sora，既然妳已經順利結束了行程也換回便服了，妳今晚有什麼計畫嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                I know, right? Taking off my wig and armor after that parade felt like heaven! As for tonight, I don't have any specific plans yet. I was actually thinking about finding a place to sit down, relax, and grab a cold drink. My legs are killing me!
+                <div class="translation">（真的！在遊行結束後把假髮和盔甲脫掉簡直像上天堂一樣！至於今晚，我還沒有特別的計畫。我其實正在想要找個地方坐下來、放鬆一下，然後喝杯冷飲。我的腳快痛死了！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Perfect! In that case, would you like to celebrate together and have a mini afterparty? I'm starving, and I would love to treat you to a nice dinner as a thank-you for letting me take your photos earlier today. We can chat more about anime and cosplay!
+                <div class="translation">（太棒了！既然如此，妳想不想一起慶祝一下，辦個小小的慶功宴？我快餓扁了，而且很想請妳吃一頓美味的晚餐，當作今天稍早讓我拍照的謝禮。我們還可以多聊聊動漫和 Cosplay！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Oh, that sounds wonderful! I would love to join you. You don't have to treat me, though; let's split the bill. Since we are in Nagoya, we should definitely head to a local *Izakaya* that serves authentic Nagoya *Meshi*. Have you ever been to a Japanese pub before?
+                <div class="translation">（噢，聽起來太棒了！我很樂意加入。不過你不用請客啦，我們平分帳單（AA制）就好。既然我們在名古屋，我們絕對應該去一家提供正宗名古屋飯的在地居酒屋。你以前去過日本的居酒屋嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                I've been to one in Tokyo, but I've never tried Nagoya specialties. Earlier you mentioned *Tebasaki*, right? I definitely want to order that. What other dishes do you recommend we try?
+                <div class="translation">（我去過東京的居酒屋，但我從來沒吃過名古屋的特產。妳之前提到了「手羽先」（炸雞翅）對吧？我絕對想點那個。妳還推薦我們嚐嚐哪些菜色？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Besides *Tebasaki*, you absolutely must try *Miso Katsu*, which are crispy pork cutlets drizzled with a rich, sweet red miso sauce. Another famous option is *Dotenyaki*, beef sinew simmered in miso broth. Nagoya's food culture heavily features red miso, so the flavors are quite rich and savory.
+                <div class="translation">（除了手羽先，妳絕對必須嚐嚐「味噌炸豬排」（Miso Katsu），那是淋上濃郁甘甜紅味噌醬的酥脆豬排。另一個有名的選擇是「土手燒」（Dotenyaki），也就是在味噌湯汁裡慢火燉煮的牛筋。名古屋的飲食文化大量使用了紅味噌，所以味道相當濃郁且濃郁微甜。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Wow, everything sounds mouth-watering! I love rich flavors, so I think Nagoya food is going to be perfect for me. Is there a good restaurant nearby that you know of? I can check the reservations on my smartphone.
+                <div class="translation">（哇，每樣聽起來都讓人垂涎三尺！我很喜歡濃郁的味道，所以我相信名古屋的美食對我來說會非常完美。這附近有妳熟知的好餐廳嗎？我可以用手機確認看看能不能預約。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Yes, there's a very famous Izakaya chain called "Sekai no Yamachan" just a five-minute walk from here in the Sakae district. They are famous for their spicy, peppery chicken wings. Let's head over there right now! Hopefully, it won't be too crowded since it's WCS weekend.
+                <div class="translation">（有的，在榮區離這裡步行只要五分鐘的地方，有一家非常著名的居酒屋連鎖店叫「世界的山將」。他們以香辣、胡椒味濃郁的雞翅聞名。我們現在就過去吧！希望因為是 WCS 週末，那裡不會太擠。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                *[Arriving at the Izakaya]* Excellent, we got a table right away! Oh, the menu has pictures, which is incredibly helpful. Sora, could you help me order a cold draft beer and a plate of their signature *Tebasaki* to start?
+                <div class="translation">（*［抵達居酒屋］* 太棒了，我們馬上就有位子了！噢，菜單上有圖片，這真是幫了大忙。Sora，妳可以先幫我點一杯冰生啤酒和一盤他們的招牌手羽先當開頭嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Sure! *[To the waiter]* Excuse me, we are ready to order. Can we get one draft beer, one oolong tea, and two servings of the original *Tebasaki*, please? Also, let's get a side of *Miso Katsu* skewers. 
+                <div class="translation">（沒問題！*［對店員］* 不好意思，我們要點餐。麻煩給我們一杯生啤酒、一杯烏龍茶，還有兩份原味手羽先。另外，再來一份味噌炸豬排串。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Awesome. *[Drinks arrive]* Cheers to an amazing World Cosplay Summit Day One! By the way, I noticed many cosplayers gather at restaurants post-event. Is this type of afterparty common in Japan?
+                <div class="translation">（太讚了。*［飲料送達］* 為完美的 WCS 第一天乾杯！順帶一提，我注意到活動結束後有很多 Cosplayer 聚集在餐廳裡。這種慶功宴在日本很常見嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Yes, we call it a *Utiage*. It is a vital part of the subculture here. It's the best time to let your hair down, share stories about costume mishaps, and strengthen the bonds between photographers and cosplayers. It really completes the whole convention experience!
+                <div class="translation">（是的，我們稱之為「打ち上げ」（Utiage）。這是這裡次文化中不可或缺的一部分。這是卸下防備（放鬆）、分享道具壞掉的糗事，並加深攝影師與 Cosplayer 之間情誼的最佳時機。這真的讓整個動漫展的體驗變得完整！）</div>
+            </div>
+        </div>
+
+        <h3>📝 Key Vocabulary</h3>
+        <table>
+            <tr>
+                <th>Word / Phrase</th>
+                <th>中文解釋</th>
+                <th>例句</th>
+            </tr>
+            <tr>
+                <td><strong>Drained</strong></td>
+                <td>精疲力竭的 / 電量耗盡的</td>
+                <td>I feel completely drained after walking all day.</td>
+            </tr>
+            <tr>
+                <td><strong>Split the bill</strong></td>
+                <td>平分帳單 / AA制</td>
+                <td>Let's split the bill for the afterparty dinner.</td>
+            </tr>
+            <tr>
+                <td><strong>Savory</strong></td>
+                <td>鹹香可口的 / 風味濃郁的</td>
+                <td>Nagoya miso has a very rich and savory taste.</td>
+            </tr>
+            <tr>
+                <td><strong>Draft beer</strong></td>
+                <td>生啤酒</td>
+                <td>Nothing beats a cold draft beer after a hot summer con.</td>
+            </tr>
+            <tr>
+                <td><strong>Let one's hair down</strong></td>
+                <td>放鬆 / 卸下緊繃防備</td>
+                <td>An afterparty is a great place to let your hair down.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ================= 日文版頁面 ================= -->
+    <div id="section-ja" class="content-section">
+        <div class="audio-control">
+            <span>🔊 本文朗読 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('ja')">日本語ダイアログを再生</button>
+        </div>
+
+        <h3>🗣️ 対話：コスサミ終了後の「打ち上げ」・名古屋メシを堪能する</h3>
+        <div class="dialogue-box" id="text-ja">
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                ふう！本当にお疲れ様でした。大須観音での世界コスプレサミットのパレード、本当に最高（レジェンド級）でしたね。でも、夏の暑さで僕の体力はすっかり空っぽ（充電切れ）です。ソラさん、無事にスケジュールが終わって私服に替わったところですけど、今夜は何か予定がありますか？
+                <div class="translation">（呼！真是漫長的一天。大須觀音的世界 Cosplay 高峰會遊行簡直是傳奇級的精采，但夏天的熱浪完全把我的體力耗盡了。嘿 Sora，既然妳已經順利結束了行程也換回便服了，妳今晚有什麼計畫嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                本当ですね！パレードが終わってウィッグと鎧を脱いだ瞬間は、まさに天国に行ける気分でした！今夜の予定は、実はまだ特に決まっていないんです。どこかに座って、のんびり冷たい飲み物でも飲みたいなって思っていたところでした。もう足がパンパンで死にそうです！
+                <div class="translation">（真的！在遊行結束後把假髮和盔甲脫掉簡直像上天堂一樣！至於今晚，我還沒有特別的計畫。我其實正在想要找個地方坐下來、放鬆一下，然後喝杯冷飲。我的腳快痛死了！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                素晴らしい！それなら、今日のお祝いを兼ねて、一緒にミニ「打ち上げ」をしませんか？僕はお腹がペコペコですし、今日撮影させてくれたお礼として、美味しい夕食をご馳走させてほしいです。アニメやコスプレの話をもっとたくさんしましょう！
+                <div class="translation">（太棒了！既然如此，妳想不想一起慶祝一下，辦個小小的慶功宴？我快餓扁了，而且很想請妳吃一頓美味的晚餐，當作今天稍早讓我拍照的謝禮。我們還可以多聊聊動漫和 Cosplay！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                わあ、いいですね！ぜひご一緒させてください。あ、でもご馳走にならなくて大丈夫ですよ、割り勘（わりかん）にしましょう。せっかく名古屋にいるんですから、本物の「名古屋メシ」が食べられる地元の居酒屋に行きましょうよ。レオさんは日本の居酒屋に行ったことがありますか？
+                <div class="translation">（噢，聽起來太棒了！我很樂意加入。不過你不用請客啦，我們平分帳單（AA制）就好。既然我們在名古屋，我們絕對應該去一家提供正宗名古屋飯的在地居酒屋。你以前去過日本的居酒屋嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                東京の居酒屋には行ったことがありますが、名古屋の特産品は食べたことがないんです。さっきソラさんが言っていた「手羽先（てばさき）」、あれは絶対に注文したいです！他にはどんなおすすめ料理がありますか？
+                <div class="translation">（我去過東京的居酒屋，但我從來沒吃過名古屋的特產。妳之前提到了「手羽先」（炸雞翅）對吧？我絕對想點那個。妳還推薦我們嚐嚐哪些菜色？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                手羽先の他には、「味噌カツ」が絶対に外せません！サクサクのトンカツに、濃厚で甘い赤味噌のタレをたっぷりかけたものです。あとは、味噌ベースのスープで牛すじをじっくり煮込んだ「どて焼き」も有名ですよ。名古屋の食文化は赤味噌をメインに使っているので、味が濃くてコクがあって美味しいんです。
+                <div class="translation">（除了手羽先，妳絕對必須嚐嚐「味噌炸豬排」（Miso Katsu），那是淋上濃郁甘甜紅味噌醬的酥脆豬排。另一個有名的選擇是「土手燒」（Dotenyaki），也就是在味噌湯汁裡慢火燉煮的牛筋。名古屋的飲食文化大量使用了紅味噌，所以味道相當濃郁且濃郁微甜。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                うわあ、どれを聞いてもヨダレが出そうです！僕は濃い味が大好きなので、名古屋メシは僕にぴったりだと思います。この近くに、ソラさんの知っている良いお店はありますか？スマホで予約状況を確認してみます。
+                <div class="translation">（哇，每樣聽起來都讓人垂涎三尺！我很喜歡濃郁的味道，所以我相信名古屋的美食對我來說會非常完美。這附近有妳熟知的好餐廳嗎？我可以用手機確認看看能不能預約。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                それなら、ここから栄（さかえ）エリアへ歩いて5分ほどのところに「世界の山ちゃん」というすごく有名な居酒屋チェーンがありますよ。ピリッと辛くてコショウが効いた手羽先が大人気なんです。さっそく行ってみましょう！コスサミの週末だから、混んでいないといいなぁ。
+                <div class="translation">（有的，在榮區離這裡步行只要五分鐘的地方，有一家非常著名的居酒屋連鎖店叫「世界的山將」。他們以香辣、胡椒味濃郁的雞翅聞名。我們現在就過去吧！希望因為是 WCS 週末，那裡不會太擠。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                ［居酒屋に到着して］やった、すぐに席に案内してもらえましたね！おお、メニューに写真が付いていてめちゃくちゃ助かります。ソラさん、まずは冷たい生ビールと、看板メニューの「手羽先」を注文するのを手伝ってもらえますか？
+                <div class="translation">（*［抵達居酒屋］* 太棒了，我們馬上就有位子了！噢，菜單上有圖片，這真是幫了大忙。Sora，妳可以先幫我點一杯冰生啤酒和一盤他們的招牌手羽先當開頭嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                お任せください！［店員さんに向かって］すみません、注文をお願いします。生ビールを一つ、ウーロン茶を一つ、それと元祖手羽先を二人前（ににんまえ）ください！あと、サイドメニューの味噌カツ串もお願いします。
+                <div class="translation">（沒問題！*［對店員］* 不好意思，我們要點餐。麻煩給我們一杯生啤酒、一杯烏龍茶，還有兩份原味手羽先。另外，再來一份味噌炸豬排串。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                最高ですね。［飲み物が届いて］最高だったコスプレサミットの1日目に、乾杯！ところで、イベント終了後にたくさんのレイヤーさんが飲食店に集まっているのを見かけました。こういう「打ち上げ」って、日本を代表する文化（コスプレ界隈の定番）なんですか？
+                <div class="translation">（太讚了。*［飲料送達］* 為完美的 WCS 第一天乾杯！順帶一提，我注意到活動結束後有很多 Cosplayer 聚集在餐廳裡。這種慶功宴在日本很常見嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                そうですね！私たちはこれを「打ち上げ」と呼んでいて、こちらのオタクカルチャー（サブカル）には欠かせない大切なイベントなんです。衣装や道具のトラブル（衣装崩れ）の失敗談を笑い話にしたり、カメラマンさんとレイヤーさんの絆を深めたりするのに最高の時間なんですよ。これがあって初めて、イベントが本当に完結するって感じです！
+                <div class="translation">（是的，我們稱之為「打ち上げ」（Utiage）。這是這裡次文化中不可或缺的一部分。這是卸下防備（放鬆）、分享道具壞掉的糗事，並加深攝影師與 Cosplayer 之間情誼的最佳時機。這真的讓整個動漫展的體驗變得完整！）</div>
+            </div>
+        </div>
+
+        <h3>📝 重要な単語帳</h3>
+        <table>
+            <tr>
+                <th>単語 / 表現</th>
+                <th>読み方</th>
+                <th>中文解釋</th>
+                <th>例文</th>
+            </tr>
+            <tr>
+                <td><strong>打ち上げ</strong></td>
+                <td>うちあげ</td>
+                <td>慶功宴 / 活動結束後的聚餐</td>
+                <td>イベントの後は居酒屋で打ち上げをする。</td>
+            </tr>
+            <tr>
+                <td><strong>割り勘</strong></td>
+                <td>わりかん</td>
+                <td>AA制 / 按人頭平分費用</td>
+                <td>今日のご飯代は割り勘にしましょう。</td>
+            </tr>
+            <tr>
+                <td><strong>名古屋メシ</strong></td>
+                <td>なごやめし</td>
+                <td>名古屋在地特色美食總稱</td>
+                <td>名古屋メシといえば手羽先やひつまぶしです。</td>
+            </tr>
+            <tr>
+                <td><strong>二人前</strong></td>
+                <td>ににんまえ</td>
+                <td>兩人份（點餐必備：數量+人前）</td>
+                <td>手羽先を二人前注文します。</td>
+            </tr>
+            <tr>
+                <td><strong>乾杯</strong></td>
+                <td>かんぱい</td>
+                <td>乾杯！</td>
+                <td>今日の成功を祝って、乾杯！</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    function switchLanguage(lang) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+        
+        if(lang === 'en') {
+            document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+            document.getElementById('section-en').classList.add('active');
+        } else {
+            document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+            document.getElementById('section-ja').classList.add('active');
+        }
+    }
+
+    function speakText(lang) {
+        window.speechSynthesis.cancel();
+
+        let textContainerId = lang === 'en' ? 'text-en' : 'text-ja';
+        let container = document.getElementById(textContainerId);
+        let lines = container.querySelectorAll('.dialogue-line');
+        
+        lines.forEach(line => {
+            let clone = line.cloneNode(true);
+            let trans = clone.querySelector('.translation');
+            let spk = clone.querySelector('.speaker');
+            if(trans) trans.remove();
+            if(spk) spk.remove();
+            
+            let pureText = clone.innerText.trim();
+            let utterance = new SpeechSynthesisUtterance(pureText);
+            
+            if (lang === 'en') {
+                utterance.lang = 'en-US';
+                utterance.rate = 0.88; 
+            } else {
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.92;
+            }
+            window.speechSynthesis.speak(utterance);
+        });
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 06: Queuing at the Popular Booth! / 大手サークルに並ぼう！</title>
+    <style>
+        :root {
+            --primary-color: #fbc531;
+            --secondary-color: #4c51bf;
+            --text-color: #2c3e50;
+            --bg-color: #f7f9fc;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", "Helvetica", "Arial", "LiHei Pro", "Medium", "Microsoft JhengHei";
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 { color: var(--secondary-color); margin-bottom: 5px; }
+        h2 { color: var(--primary-color); font-size: 1.2rem; margin-top: 0; }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 2px solid var(--secondary-color);
+            background-color: transparent;
+            color: var(--secondary-color);
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .audio-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #e0e7ff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .play-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .play-btn:hover { opacity: 0.9; }
+
+        .dialogue-box {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fafafa;
+            margin-bottom: 25px;
+        }
+
+        .dialogue-line {
+            margin-bottom: 18px;
+            border-left: 4px solid #ddd;
+            padding-left: 15px;
+        }
+
+        .dialogue-line.highlight {
+            border-left-color: var(--primary-color);
+        }
+
+        .speaker {
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .translation {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th { background-color: #e0e7ff; color: var(--text-color); }
+
+        @media (max-width: 600px) {
+            th, td { padding: 8px; font-size: 0.9rem; }
+            .tab-btn { padding: 8px 15px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Unit 06: Queuing at the Popular Booth!</h1>
+        <h2>體驗 WCS 商品販售區、大手攤位購買周邊與同人誌的排隊對話（3-5分鐘精實特輯）</h2>
+    </header>
+
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchLanguage('en')">English Version</button>
+        <button class="tab-btn" onclick="switchLanguage('ja')">日本語セクション</button>
+    </div>
+
+    <!-- ================= 英文版頁面 ================= -->
+    <div id="section-en" class="content-section active">
+        <div class="audio-control">
+            <span>🔊 課文朗讀 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('en')">播放完整英文對話</button>
+        </div>
+
+        <h3>🗣️ Full Dialogue: Navigating the Merchandise Hall at WCS</h3>
+        <div class="dialogue-box" id="text-en">
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Wow, look at this massive crowd! The exhibition hall for merchandise is absolutely packed today. Sora, is that insanely long line over there the queue for the official World Cosplay Summit goods?
+                <div class="translation">（哇，看看這龐大的人潮！今天商品展覽館內簡直擠爆了。Sora，那邊排得誇張長的隊伍，是購買 WCS 官方周邊的隊列嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                No, actually that line is for a famous "wall circle" booth! A legendary illustrator is selling limited-edition artbooks and exclusive merchandise there today. In anime conventions, we call these extremely popular booths "major booths" or "wall booths" because they have to be placed near the walls for crowd control.
+                <div class="translation">（不，其實那個隊伍是一家很有名的「牆壁攤（大手攤位）」！今天有一位傳奇插畫家在那裡販售限量版畫冊和獨家周邊。在動漫展裡，我們把這種超級熱門的攤位叫做「大手攤」或「牆壁攤」，因為為了控制人潮，他們必須被安排在靠近牆壁的位置。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Ah, I see! That makes perfect sense. I am actually looking for the booth that sells the exclusive collaboration badges and acrylic stands for that sports anime series. Do you happen to know where it is located?
+                <div class="translation">（啊，我懂了！這完全說得通。我其實正在尋找販售那部運動動漫系列聯名限定徽章和壓克力立牌的攤位。妳碰巧知道它在哪個位置嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Yes! According to the floor map, it's located at Booth B-12, right around the corner. Oh wait, look over there. Someone is holding up a sign that says "End of the Line." That means the queue starts all the way back here! We should go find the end of the line immediately before it gets any longer.
+                <div class="translation">（有的！根據場地平面圖，它位於 B-12 攤位，就在那個轉角處。喔等等，看那邊。有人正舉著一個寫有「隊尾（最後尾）」的牌子。這代表隊伍一路延伸到這裡來了！我們應該立刻去那裡排隊，免得隊伍變得更長。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                *[Walking to the queue]* Excuse me, is this the back of the line for the anime collaboration booth? 
+                <div class="translation">（*［走向隊伍］* 不好意思，請問這是動漫聯名攤位的隊尾嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Attendee:</span>
+                Yes, it is! I am currently the last person. Here, please take this sign and hold it up so the next person knows where to line up.
+                <div class="translation">（是的，沒錯！我目前是最後一個人。來，請接下這塊牌子並把它舉好，好讓下一個人知道要在哪裡排隊。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Oh, thank you! So, this is how it works. Sora, since I have to hold this sign for a bit, can you check the menu on your phone? I'm worried the items might sell out before we reach the front.
+                <div class="translation">（噢，謝謝你！原來運作機制是這樣。Sora，既然我得拿著這個牌子一陣子，妳能用手機確認一下商品明細嗎？我很擔心在我們排到前面之前，商品就已經完售了。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Let me check their official X account updates... Oh, good news! They just posted that everything is still in stock. However, there is a strict purchase limit. Each person can only buy a maximum of two items per merchandise category. 
+                <div class="translation">（讓我查一下他們官方 X 的即時更新... 喔，好消息！他們剛發文說目前所有商品都還有庫存。不過，有限制嚴格的限購數量。每人每個商品類別最多只能購買兩件。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                A purchase limit is actually a relief. It prevents scalpers from buying up everything instantly. Hey, look, the line is moving pretty fast! We are already halfway there. 
+                <div class="translation">（有限購數量其實讓人鬆了一口氣。這能防止黃牛瞬間把所有東西一掃而空。嘿，看，隊伍前進得挺快的！我們已經走完一半了。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                *[Reaching the front of the booth]* Alright, we are next! Do you want to buy the artbook as well? If you buy the complete set, it comes with an exclusive bonus postcard and a special shopping bag!
+                <div class="translation">（*［排到攤位前］* 好的，下一個就輪到我們了！你也要連同畫冊一起買嗎？如果你購買全套的話，還會附贈一張獨家特典明信片和一個特別的購物袋喔！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Definitely! I'll take the full set. *[To the booth staff]* Hello, I'd like one complete set, please. Also, can I add two random acrylic keychains?
+                <div class="translation">（一定要的！我要買全套。*［對攤位工作人員］* 你好，麻煩給我一套全套商品。另外，我可以再加購兩個隨機壓克力鑰匙圈嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Staff:</span>
+                Certainly! That will be one complete set and two blind-box keychains. Your total comes to 6,500 yen. We only accept cash or PayPay today. Will that be alright?
+                <div class="translation">（好的！一套全套商品和兩個盲盒鑰匙圈。總共是 6500 日圓。我們今天只接受現金或 PayPay。這樣可以嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Cash is perfect, here you go. Thank you so much! *[Receiving the goods]* Yes! I finally got it! Look at the print quality on this bag, Sora. It's beautiful!
+                <div class="translation">（現金沒問題，給你。非常謝謝你！*［接過商品］* 耶！我終於買到了！看這個袋子上的印刷品質，Sora。太漂亮了！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Awesome! I'm so glad you got the full set before anything sold out. Now that our hands are full of merchandise, let's find a spot to check our blind boxes and see which characters you drew!
+                <div class="translation">（太棒了！我真高興妳在任何東西完售前買到了全套。既然我們現在雙手拿滿了戰利品（周邊），我們去找個地方開盲盒，看看你抽中哪些角色吧！）</div>
+            </div>
+        </div>
+
+        <h3>📝 Key Vocabulary</h3>
+        <table>
+            <tr>
+                <th>Word / Phrase</th>
+                <th>中文解釋</th>
+                <th>例句</th>
+            </tr>
+            <tr>
+                <td><strong>Wall circle</strong></td>
+                <td>牆壁攤 / 大手攤位</td>
+                <td>The wall circle always attracts a massive queue.</td>
+            </tr>
+            <tr>
+                <td><strong>In stock</strong></td>
+                <td>有庫存 / 現貨</td>
+                <td>Are the acrylic stands still in stock?</td>
+            </tr>
+            <tr>
+                <td><strong>Purchase limit</strong></td>
+                <td>限購數量 / 購買限制</td>
+                <td>There is a strict purchase limit of two per person.</td>
+            </tr>
+            <tr>
+                <td><strong>Exclusive bonus</strong></td>
+                <td>獨家特典 / 附加贈品</td>
+                <td>The full set includes an exclusive bonus postcard.</td>
+            </tr>
+            <tr>
+                <td><strong>Blind-box / Blind buy</strong></td>
+                <td>盲盒 / 隨機抽取商品</td>
+                <td>I hope I draw my favorite character from this blind box!</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ================= 日文版頁面 ================= -->
+    <div id="section-ja" class="content-section">
+        <div class="audio-control">
+            <span>🔊 本文朗読 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('ja')">日本語ダイアログを再生</button>
+        </div>
+
+        <h3>🗣️ 対話：物販エリア・大手サークルでの列並びとグッズ購入</h3>
+        <div class="dialogue-box" id="text-ja">
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                うわあ、ものすごい人出（ひとで）ですね！今日の物販会場（ぶっぱんかいじょう）は完全に満員状態です。ソラさん、あっちにある信じられないくらい長い行列は、世界コスプレサミットの公式グッズの列ですか？
+                <div class="translation">（哇，看看這龐大的人潮！今天商品展覽館內簡直擠爆了。Sora，那邊排得誇張長的隊伍，是購買 WCS 官方周邊的隊列嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                いえ、実はあの列は有名な「壁サークル（かべさーくる）」の列ですよ！今日は伝説的なイラストレーターさんが、限定の同人誌（画集）や限定グッズを販売しているんです。アニメイベントでは、こういう超人気のサークルを「壁サークル」や「大手（おおて）」と呼びます。混雑を避けるために壁際に配置されるからなんです。
+                <div class="translation">（不，其實那個隊伍是一家很有名的「牆壁攤（大手攤位）」！今天有一位傳奇插畫家在那裡販售限量版畫冊和獨家周邊。在動漫展裡，我們把這種超級熱門的攤位叫做「大手攤」或「牆壁攤」，因為為了控制人潮，他們必須被安排在靠近牆壁的位置。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                なるほど、そういうことですか！すごく納得がいきました。僕はあのスポーツアニメの限定コラボ缶バッジとアクリルスタンドを売っているブースを探しているんですけど、どこにあるか分かりますか？
+                <div class="translation">（啊，我懂了！這完全說得通。我其實正在尋找販售那部運動動漫系列聯名限定徽章和壓克力立牌的攤位。妳碰巧知道它在哪個位置嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                はい！会場マップによると、角を曲がったところにあるB-12ブースですね。あ、ちょっと待って、あそこを見てください。「最後尾（さいこうび）」のプラカードを持っている人がいます。あそこが列の終わりってことです！これ以上伸びる前に、急いで最後尾を探して並びましょう。
+                <div class="translation">（有的！根據場地平面圖，它位於 B-12 攤位，就在那個轉角處。喔等等，看那邊。有人正舉著一個寫有「隊尾（最後尾）」的牌子。這代表隊伍一路延伸到這裡來了！我們應該立刻去那裡排隊，免得隊伍變得更長。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                ［列に向かって歩きながら］すみません、ここはアニメのコラボブースの最後尾（さいこうび）ですか？
+                <div class="translation">（*［走向隊伍］* 不好意思，請問這是動漫聯名攤位的隊尾嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">一般の参加者：</span>
+                はい、そうです！今私が最後尾です。はい、この「最後尾札（さいこうびふだ）」を持って、上に掲げて（かかげて）もらえますか？次の人がどこに並べばいいかわかるようにするためです。
+                <div class="translation">（是的，沒錯！我目前是最後一個人。來，請接下這塊牌子並把它舉好，好讓下一個人知道要在哪裡排隊。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                あ、ありがとうございます！なるほど、こういうシステムなんですね。ソラさん、僕がしばらくこの看板を持っているので、スマホでグッズのお品書き（おしながき）を確認してもらえますか？僕たちの番が来る前に完売（かんばい）してしまわないか心配で。
+                <div class="translation">（噢，謝謝你！原來運作機制是這樣。Sora，既然我得拿著這個牌子一陣子，妳能用手機確認一下商品明細嗎？我很擔心在我們排到前面之前，商品就已經完售了。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                公式X（旧Twitter）のリアルタイム情報を見てみますね…あ、朗報（ろうほう）です！「現時点で全グッズの在庫あり」ってツイートされました。でも、厳しい限数（げんすう・購入制限）がありますね。一人につき各ジャンル2個までだそうです。
+                <div class="translation">（讓我查一下他們官方 X 的即時更新... 喔，好消息！他們剛發文說目前所有商品都還有庫存。不過，有限制嚴格的限購數量。每人每個商品類別最多只能購買兩件。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                購入制限（限数）があるのは逆に安心ですね。転売ヤー（てんばいやー）が一瞬で全部買い占めるのを防げますから。あ、見て、列が進むのが結構早いですよ！もう半分まで来ました。
+                <div class="translation">（有限購數量其實讓人鬆了一口氣。這能防止黃牛瞬間把所有東西一掃而空。嘿，看，隊伍前進得挺快的！我們已經走完一半了。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                ［ブースの目の前に到着して］よし、次はいよいよ私たちの番です！画集も一緒に買いますか？フルセットで買うと、限定特典（とくてん）のポストカードと特製ショッパー（紙袋）がついてくるんですよ！
+                <div class="translation">（*［排到攤位前］* 好的，下一個就輪到我們了！你也要連同畫冊一起買嗎？如果你購買全套的話，還會附贈一張獨家特典明信片和一個特別的購物袋喔！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                もちろん！フルセットにします。［スタッフさんに向かって］すみません、このフルセットを一つください。あと、ランダムのアクリルキーホルダーを二つ追加（ついか）できますか？
+                <div class="translation">（一定要的！我要買全套。*［對攤位工作人員］* 你好，麻煩給我一套全套商品。另外，我可以再加購兩個隨機壓克力鑰匙圈嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">スタッフ：</span>
+                かしこまりました！フルセット一つと、ブラインド（ランダム）のキーホルダーが二つですね。お会計（かいけい）は合わせて6,500円になります。本日は現金かPayPayのみのお取り扱いとなりますが、よろしいでしょうか？
+                <div class="translation">（好的！一套全套商品和兩個盲盒鑰匙圈。總共是 6500 日圓。我們今天只接受現金或 PayPay。這樣可以嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                現金で大丈夫です、はいどうぞ。ありがとうございました！［グッズを受け取って］やったー！ついに手に入れました！ソラさん、この特製バッグの印刷のクオリティを見てください。すごく綺麗です！
+                <div class="translation">（現金沒問題，給你。非常謝謝你！*［接過商品］* 耶！我終於買到了！看這個袋子上的印刷品質，Sora。太漂亮了！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                最高ですね！完売が出る前にフルセットが買えて本当に良かったです。戦利品（せんりひん）で両手が塞がっちゃったので、どこか座れる場所を探して、ブラインドグッズの開封（かいふう）式をしましょう。どのキャラを引けたか楽しみですね！
+                <div class="translation">（太棒了！I'm so glad you got the full set before anything sold out. 現在既然我們雙手拿滿了戰利品，我們去找個地方開盲盒，看看你抽中哪些角色吧！）</div>
+            </div>
+        </div>
+
+        <h3>📝 重要な単語帳</h3>
+        <table>
+            <tr>
+                <th>単語 / 表現</th>
+                <th>読み方</th>
+                <th>中文解釋</th>
+                <th>例文</th>
+            </tr>
+            <tr>
+                <td><strong>壁サークル</strong></td>
+                <td>かべさーくる</td>
+                <td>牆壁攤 / 超人氣大手攤位</td>
+                <td>あの壁サークルの新刊は絶対に買いたい。</td>
+            </tr>
+            <tr>
+                <td><strong>最後尾札</strong></td>
+                <td>さいこうびふだ</td>
+                <td>隊尾看板 / 最後尾告示牌</td>
+                <td>列に並んだら、最後尾札を受け取って掲げる。</td>
+            </tr>
+            <tr>
+                <td><strong>お品書き</strong></td>
+                <td>おしながき</td>
+                <td>商品清單 / 菜單項目</td>
+                <td>Twitterでお品書きを確認して予算を決める。</td>
+            </tr>
+            <tr>
+                <td><strong>限数（購入制限）</strong></td>
+                <td>げんすう</td>
+                <td>每人限購數量</td>
+                <td>人気商品のため、お一人様2個の限数があります。</td>
+            </tr>
+            <tr>
+                <td><strong>戦利品</strong></td>
+                <td>せんりひん</td>
+                <td>戰利品 / 買到的同人周邊</td>
+                <td>今日の戦利品をベッドに並べて写真を撮る。</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    function switchLanguage(lang) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+        
+        if(lang === 'en') {
+            document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+            document.getElementById('section-en').classList.add('active');
+        } else {
+            document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+            document.getElementById('section-ja').classList.add('active');
+        }
+    }
+
+    function speakText(lang) {
+        window.speechSynthesis.cancel();
+
+        let textContainerId = lang === 'en' ? 'text-en' : 'text-ja';
+        let container = document.getElementById(textContainerId);
+        let lines = container.querySelectorAll('.dialogue-line');
+        
+        lines.forEach(line => {
+            let clone = line.cloneNode(true);
+            let trans = clone.querySelector('.translation');
+            let spk = clone.querySelector('.speaker');
+            if(trans) trans.remove();
+            if(spk) spk.remove();
+            
+            let pureText = clone.innerText.trim();
+            let utterance = new SpeechSynthesisUtterance(pureText);
+            
+            if (lang === 'en') {
+                utterance.lang = 'en-US';
+                utterance.rate = 0.88; 
+            } else {
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.92;
+            }
+            window.speechSynthesis.speak(utterance);
+        });
+    }
+</script>
+
+</body>
+</html>

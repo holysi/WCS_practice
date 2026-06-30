@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCS 名古屋 Cosplay 旅遊英日語特輯 - 首頁</title>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            --bg-color: #f8f9fa;
+            --text-color: #2d3436;
+            --card-bg: #ffffff;
+            --tag-event: #fd79a8;
+            --tag-photo: #00cec9;
+            --tag-daily: #ff9f43;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", "Arial", "Microsoft JhengHei";
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: var(--primary-gradient);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .hero h1 { margin: 0; font-size: 2.5rem; letter-spacing: 1px; }
+        .hero p { margin: 10px 0 0 0; font-size: 1.1rem; opacity: 0.9; }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .intro-box {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            margin-bottom: 40px;
+            border-left: 5px solid #6c5ce7;
+        }
+
+        .intro-box h2 { margin-top: 0; color: #6c5ce7; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1xl));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            border: 1px solid #edf2f7;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(108, 92, 231, 0.15);
+        }
+
+        .unit-num {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #6c5ce7;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .card h3 { margin: 0 0 10px 0; font-size: 1.25rem; color: #2d3436; }
+        .card p { margin: 0 0 20px 0; color: #636e72; font-size: 0.95rem; }
+
+        .tag-container {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .tag.event { background-color: var(--tag-event); }
+        .tag.photo { background-color: var(--tag-photo); }
+        .tag.daily { background-color: var(--tag-daily); }
+
+        .btn {
+            display: block;
+            text-align: center;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover { opacity: 0.9; }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: #b2bec3;
+            font-size: 0.9rem;
+            border-top: 1px solid #edf2f7;
+        }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1>前進名古屋！世界 Cosplay 高峰會特輯</h1>
+        <p>GitHub Pages 個人靜態語言學習專案 • 英日雙語數位有聲雜誌</p>
+    </div>
+
+    <div class="container">
+        
+        <!-- 專案簡介說明區 -->
+        <div class="intro-box">
+            <h2>專案說明與使用指南</h2>
+            <p>本教材專為前往日本名古屋參加<strong>世界 Cosplay 高峰會（WCS）</strong> 的愛好者與攝影師量身打造。內容涵蓋展場哈拉、深度技術交流及在地旅遊的核心場景。每單元皆提供 <strong>3 至 5 分鐘</strong> 的長篇對話演練，並配備標準的美式英語及日語語音朗讀。</p>
+            <p>💡 <strong>系統特色：</strong> 點擊卡片進入單元後，可透過分頁一鍵切換英日文版本。點擊 <strong>🔊 課文朗讀 (TTS)</strong> 按鈕，系統將自動調校成最適合外語聽力與跟讀（Shadowing）的流暢慢速語音，助你打造肌肉記憶！</p>
+        </div>
+
+        <!-- 單元卡片網格 -->
+        <div class="grid">
+            
+            <!-- Unit 01 -->
+            <div class="card">
+                <div>
+                    <div class="unit-num">Unit 01</div>
+                    <h3>Nice to Meet You! / 初めまして！</h3>
+                    <p>活動現場初次搭訕的社交第一步！包含禮貌地請求拍照、讚美對方的服裝還原度與開啟動漫話題。</p>
+                    <div class="tag-container">
+                        <span class="tag event">現場互動</span>
+                    </div>
+                </div>
+                <a href="unit01.html" class="btn">進入單元學習</a>
+            </div>
+
+            <!-- Unit 02 -->
+            <div class="card">
+                <div>
+                    <div class="unit-num">Unit 02</div>
+                    <h3>Strike a Cool Pose! / カッコいいポーズを決めよう！</h3>
+                    <p>攝影師與 Coser 的現場核心互動。包含尋找合適光線避開死黑陰影、調整三分之二側身、指導低角度仰拍與抓拍回眸動態。</p>
+                    <div class="tag-container">
+                        <span class="tag photo">攝影指導</span>
+                    </div>
+                </div>
+                <a href="unit02.html" class="btn">進入單元學習</a>
+            </div>
+
+            <!-- Unit 03 -->
+            <div class="card">
+                <div>
+                    <div class="unit-num">Unit 03</div>
+                    <h3>Did You Make This? / この衣装、手作りですか？</h3>
+                    <p>硬核造形技術的深度哈拉！深入探討 EVA 泡棉熱風槍定型、3D 列印層線的砂紙打磨、打底塗層與布料剪裁技巧。</p>
+                    <div class="tag-container">
+                        <span class="tag event">現場互動</span>
+                    </div>
+                </div>
+                <a href="unit03.html" class="btn">進入單元學習</a>
+            </div>
+
+            <!-- Unit 04 -->
+            <div class="card">
+                <div>
+                    <div class="unit-num">Unit 04</div>
+                    <h3>Let's Exchange Social Media! / SNSを交換しよう！</h3>
+                    <p>圈內必知的社群網路マナー。交換 X/Twitter 和 Instagram 帳號、討論照片標註來源（Photo Credit）與發圖前的確認禮儀。</p>
+                    <div class="tag-container">
+                        <span class="tag event">現場互動</span>
+                    </div>
+                </div>
+                <a href="unit04.html" class="btn">進入單元學習</a>
+            </div>
+
+            <!-- Unit 05 -->
+            <div class="card">
+                <div>
+                    <div class="unit-num">Unit 05</div>
+                    <h3>The Afterparty! / 打ち上げに行こう！</h3>
+                    <p>展期結束後的居酒屋慶功宴。邀請新朋友體驗 AA 制聚餐，品嚐炸手羽先、味噌炸豬排與どて焼き等名古屋名物美食。</p>
+                    <div class="tag-container">
+                        <span class="tag daily">餐飲交通</span>
+                    </div>
+                </div>
+                <a href="unit05.html" class="btn">進入單元學習</a>
+            </div>
+
+            <!-- Unit 06 -->
+            <div class="card">
+                <div>
+                    <div class="unit-num">Unit 06</div>
+                    <h3>Queuing at the Popular Booth! / 大手サークルに並ぼう！</h3>
+                    <p>物販展覽館的大手攤位生存指南。涵蓋索取最後尾告示牌、查詢即時庫存完售狀況、了解每人限購數量與購買盲盒周邊。</p>
+                    <div class="tag-container">
+                        <span class="tag daily">餐飲交通</span>
+                    </div>
+                </div>
+                <a href="unit06.html" class="btn">進入單元學習</a>
+            </div>
+
+            <!-- Unit 07 -->
+            <div class="card">
+                <div>
+                    <div class="unit-num">Unit 07</div>
+                    <h3>Emergency! My Prop is Broken / 緊急事態！道具が壊れた</h3>
+                    <p>現場意外大考驗。面對服裝部件損壞或假髮走光的危機，如何禮貌向旁人借用安全別針、瞬間膠或行動熱熔膠槍。</p>
+                    <div class="tag-container">
+                        <span class="tag daily">餐飲交通</span>
+                    </div>
+                </div>
+                <a href="unit07.html" class="btn">進入單元學習</a>
+            </div>
+
+            <!-- Unit 08 -->
+            <div class="card">
+                <div>
+                    <div class="unit-num">Unit 08</div>
+                    <h3>Chatting About Our Favorite Anime! / 大好きなアニメを語ろう！</h3>
+                    <p>靈魂推活交流！深度暢聊運動動漫的熱血羈絆與黑暗奇幻開掛神作的劇情感想，甚至共鳴下一次的魔王總管 Cos 企劃。</p>
+                    <div class="tag-container">
+                        <span class="tag event">現場互動</span>
+                    </div>
+                </div>
+                <a href="unit08.html" class="btn">進入單元學習</a>
+            </div>
+
+            <!-- Unit 09 -->
+            <div class="card">
+                <div>
+                    <div class="unit-num">Unit 09</div>
+                    <h3>Photo Retouching and Delivery! / 写真の現像と返図！</h3>
+                    <p>線上私訊返圖對話。攝影師與 Coser 線上討論 RAW 檔現像、復古底片顆粒感調色、消去面部反光油光、維持自然的皮膚精修。</p>
+                    <div class="tag-container">
+                        <span class="tag photo">攝影指導</span>
+                    </div>
+                </div>
+                <a href="unit09.html" class="btn">進入單元學習</a>
+            </div>
+
+            <!-- Unit 10 -->
+            <div class="card">
+                <div>
+                    <div class="unit-num">Unit 10</div>
+                    <h3>Looking Forward to Meeting Again! / また会えるのを楽しみに！</h3>
+                    <p>終章。活動最後一天的感性道別，交換兩地限定伴手禮（如外郎糕），並開心地約定下一次前往台灣動漫展場次再見面。</p>
+                    <div class="tag-container">
+                        <span class="tag event">現場互動</span>
+                    </div>
+                </div>
+                <a href="unit10.html" class="btn">進入單元學習</a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 World Cosplay Summit Nagoya Travel Language Course. All Files Generated for Static Hosting.</p>
+    </footer>
+
+</body>
+</html>

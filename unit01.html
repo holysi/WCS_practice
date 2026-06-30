@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 01: Nice to Meet You! / 初めまして！</title>
+    <style>
+        :root {
+            --primary-color: #e056fd;
+            --secondary-color: #686de0;
+            --text-color: #2c3e50;
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", "Helvetica", "Arial", "LiHei Pro", "Medium", "Microsoft JhengHei";
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 { color: var(--secondary-color); margin-bottom: 5px; }
+        h2 { color: var(--primary-color); font-size: 1.2rem; margin-top: 0; }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 2px solid var(--secondary-color);
+            background-color: transparent;
+            color: var(--secondary-color);
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .audio-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f0f3f6;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .play-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .play-btn:hover { opacity: 0.9; }
+
+        .dialogue-box {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fafafa;
+            margin-bottom: 25px;
+        }
+
+        .dialogue-line {
+            margin-bottom: 18px;
+            border-left: 4px solid #ddd;
+            padding-left: 15px;
+        }
+
+        .dialogue-line.highlight {
+            border-left-color: var(--primary-color);
+        }
+
+        .speaker {
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .translation {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th { background-color: #f1f2f6; color: var(--text-color); }
+
+        @media (max-width: 600px) {
+            th, td { padding: 8px; font-size: 0.9rem; }
+            .tab-btn { padding: 8px 15px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Unit 01: Nice to Meet You!</h1>
+        <h2>現場搭訕、請求拍照與讚美裝扮（3-5分鐘精實特輯）</h2>
+    </header>
+
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchLanguage('en')">English Version</button>
+        <button class="tab-btn" onclick="switchLanguage('ja')">日本語セクション</button>
+    </div>
+
+    <!-- ================= 英文版頁面 ================= -->
+    <div id="section-en" class="content-section active">
+        <div class="audio-control">
+            <span>🔊 課文朗讀 (TTS 店家慢速)：</span>
+            <button class="play-btn" onclick="speakText('en')">播放完整英文對話</button>
+        </div>
+
+        <h3>🗣️ Full Dialogue: Meeting a Cosplayer at Oasis 21</h3>
+        <div class="dialogue-box" id="text-en">
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Excuse me, hi! I am so sorry to bother you while you are resting, but I just had to come over and say that your cosplay looks absolutely amazing! The attention to detail on your armor is incredible.
+                <div class="translation">（不好意思，嗨！真的很抱歉在妳休息的時候打擾妳，但我一定要走過來跟妳說，妳的 Cosplay 看起來真的太棒了！妳盔甲上的細節處理簡直不可思議。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Oh, wow! Thank you so much! You didn't bother me at all, I was just checking my schedule for the afternoon. I really appreciate your kind words, especially about the armor. It took me three whole months to finish making it!
+                <div class="translation">（噢，哇！非常謝謝你！你完全沒有打擾到我，我剛剛只是在確認下午的行程。真的很感謝你的讚美，特別是關於盔甲的部分。這整整花了我三個月的時間才製作完成！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Three months? That is serious dedication! It definitely paid off because the paint job and the weathering look so realistic. If you have some time right now, would it be alright if I took a few photos of you? I have my DSLR camera ready.
+                <div class="translation">（三個月？這真的是極大的專注與奉獻！這絕對是值得的，因為漆面和舊化效果看起來太逼真了。如果妳現在有時間的話，可以讓我幫妳拍幾張照片嗎？我的單眼相機已經準備好了。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Yes, absolutely! I would love to. Just give me a quick second to adjust my wig and grab my prop sword. Alright, I am ready! Let me just get into character and strike a few poses for you. How is the lighting over here?
+                <div class="translation">（好啊，當然可以！我很樂意。請給我一秒鐘調整一下假髮並拿我的道具劍。好的，我準備好了！讓我進入角色狀態並幫你擺幾個姿勢。這裡的光線還可以嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                The lighting here under the Oasis 21 roof is perfect. It gives a nice, soft even glow. Alright, hold that pose right there... perfect! Look slightly over my left shoulder... great! One more, smile a little bit... fantastic! Wow, these are turning out beautifully.
+                <div class="translation">（綠洲 21 屋頂下的光線非常完美。它帶來了很好、很柔和且均勻的光芒。好的，保持那個姿勢不要動... 完美！稍微看著我的左肩膀上方... 太棒了！再一張，稍微微笑一下... 太讚了！哇，這些照片拍出來的效果非常漂亮。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Awesome! Can I take a quick look at the camera screen? Oh, my goodness! These look incredible! You are a very talented photographer. The angles you chose make my costume look even more dynamic. Thank you so much.
+                <div class="translation">（太棒了！我可以快速看一下相機螢幕嗎？噢，我的天啊！這些看起來太不可思議了！你是一位非常有才華的攝影師。你選擇的角度讓我的服裝看起來更有動態感。非常謝謝你。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Thank you! It is easy when the model is so professional. By the way, which character are you cosplaying? I know the series is a famous sports anime, but I want to make sure I get the character's name exactly right.
+                <div class="translation">（謝謝妳！當模特兒這麼專業時，拍照就變得很容易。順帶一提，妳 Cos 的是哪個角色？我知道這個作品是一部很有名的運動動漫，但我希望能確保把角色的名字記到完全正確。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                I am cosplaying the captain of the team! He has a very strong and reliable personality, which is why I love him so much. Is this your first time attending the World Cosplay Summit here in Nagoya?
+                <div class="translation">（我 Cos 的是隊長！他有一個非常強大且可靠的個性，這也是為什麼我這麼喜歡他。這是你第一次來名古屋參加世界 Cosplay 高峰會嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Yes, it is! I flew in just two days ago, and the atmosphere here is absolutely electric. I've never seen so many amazing cosplayers in one place. Since you mentioned you were checking your schedule, are you participating in the parade later?
+                <div class="translation">（是的，沒錯！我兩天前才飛過來，這裡的氣氛簡直熱血沸騰。我從來沒有在同一個地方看過這麼多厲害的 Cosplayer。既然妳剛才提到在確認行程，妳晚點會參加遊行嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Yes, I am! The parade starts at Osu Kannon later this afternoon. It's going to be very hot, but it's always the most exciting part of the event. Oh, before I forget, do you have an Instagram or an X account? We should exchange social media!
+                <div class="translation">（會的，我要參加！遊行今天下午晚些時候會在大須觀音開始。天氣會非常熱，但這總是活動中最令人興奮的部分。噢，在忘記之前，你有 Instagram 或 X 的帳號嗎？我們應該互換一下社群媒體！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Definitely! I would love to tag you when I finish editing and uploading these photos. Here is my QR code on my phone. My handle is @Leo_Photo_WCS. Feel free to scan it!
+                <div class="translation">（一定要的！我很樂意在修完圖並上傳這些照片時標記妳。這是我手機上的 QR code。我的帳號是 @Leo_Photo_WCS。請隨意掃描！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Perfect, I just started following you! My handle is @Sora_Cos. I can't wait to see the final photos. By the way, since you are new to Nagoya, have you had lunch yet? You look a bit tired from carrying that heavy camera equipment around.
+                <div class="translation">（太好了，我剛剛追蹤你了！我的帳號是 @Sora_Cos。我等不及想看到最終的照片了。順帶一提，既然你第一次來名古屋，你吃過午餐了嗎？你提著那麼重的相機設備走來走去，看起來有點累了。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Actually, I haven't eaten anything since breakfast. I was too excited looking at all the costumes! Do you have any good recommendations for local food around here that isn't too far away?
+                <div class="translation">（事實上，我自從早餐後就什麼都沒吃了。我光看所有的服裝就太興奮了！妳這附近有推薦什麼不會太遠的在地美食嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                You are in luck! Right downstairs inside Oasis 21, or over at the nearby Sakae district, there are great restaurants. You absolutely must try Nagoya's famous *Tebasaki*, which are crispy fried chicken wings with a sweet and spicy glaze. They are perfect for regaining your energy!
+                <div class="translation">（你運氣很好！就在綠洲 21 的樓下，或者在附近的榮（Sakae）商圈就有很棒的餐廳。你絕對必須嚐嚐名古屋著名的「手羽先」，那是炸得酥脆並裹上鮮甜微辣醬汁的雞翅。這用來恢復體力再完美不過了！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                That sounds mouth-watering and exactly what I need right now. Thank you so much for the recommendation, and thank you again for letting me take your photos. Good luck with the parade this afternoon!
+                <div class="translation">（這聽起來令人垂涎三尺，而且完全就是我現在需要的。非常謝謝妳的推薦，也再次謝謝妳讓我拍照。祝妳今天下午的遊行一切順利！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Thank you! It was great meeting you, Leo. Enjoy the rest of the World Cosplay Summit, and have a wonderful time in Nagoya! Take care!
+                <div class="translation">（謝謝你！很高興認識你，Leo。享受接下來的世界 Cosplay 高峰會，並在名古屋度過美好的時光！保重囉！）</div>
+            </div>
+        </div>
+
+        <h3>📝 Extended Vocabulary</h3>
+        <table>
+            <tr>
+                <th>Word / Phrase</th>
+                <th>中文解釋</th>
+                <th>例句</th>
+            </tr>
+            <tr>
+                <td><strong>Dedication</strong></td>
+                <td>專注 / 奉獻 / 投入</td>
+                <td>Cosplay requires a lot of time and dedication.</td>
+            </tr>
+            <tr>
+                <td><strong>Weathering</strong></td>
+                <td>（道具）舊化處理 / 風化效果</td>
+                <td>The weathering on the shield looks very realistic.</td>
+            </tr>
+            <tr>
+                <td><strong>Get into character</strong></td>
+                <td>進入角色狀態</td>
+                <td>She takes deep breaths to get into character.</td>
+            </tr>
+            <tr>
+                <td><strong>Atmosphere</strong></td>
+                <td>氣氛 / 氛圍</td>
+                <td>The atmosphere at the convention was electric.</td>
+            </tr>
+            <tr>
+                <td><strong>Mouth-watering</strong></td>
+                <td>令人垂涎三尺的</td>
+                <td>The smell of Nagoya food is mouth-watering.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ================= 日文版頁面 ================= -->
+    <div id="section-ja" class="content-section">
+        <div class="audio-control">
+            <span>🔊 本文朗読 (TTS 丁寧・学習用スピード)：</span>
+            <button class="play-btn" onclick="speakText('ja')">日本語ロングダイアログを再生</button>
+        </div>
+
+        <h3>🗣️ 対話：オアシス21でレイヤーさんに声をかける</h3>
+        <div class="dialogue-box" id="text-ja">
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                すみません、こんにちは！ご休憩中にお声をかけてしまって本当に申し訳ないのですが、コスプレが本当に素敵すぎて、どうしてもお伝えしたくて。特にその鎧のクオリティと細部へのこだわりが凄すぎます！
+                <div class="translation">（不好意思，妳好！在妳休息時前來搭話真的很抱歉，但妳的 Cosplay 真的太棒了，不論如何都想傳達給妳。特別是那件盔甲的還原度跟對細節的講究真的太厲害了！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                わあ、そうなんですか！ありがとうございます！全然邪魔になっていませんよ、ちょうど午後のスケジュールを確認していたところですから。そう言っていただき、特に鎧のことを褒めてもらえてすごく嬉しいです。これ、完成させるのに丸3ヶ月もかかったんですよ！
+                <div class="translation">（哇，是這樣嗎！謝謝你！完全沒有打擾到我喔，我剛好在確認下午的行程。能被你這麼說、特別是誇獎盔甲的部分真的超開心的。這個，花了我整整三個月才完成的呢！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                3ヶ月ですか！？ものすごい情熱ですね。でもその甲斐が完全にありますよ。塗装の質感やウェザリング（汚し加工）が本当にリアルで本物みたいです。もし今少しお時間があれば、写真を何枚か撮影させていただいてもよろしいでしょうか？一眼レフカメラの準備はバッチリです。
+                <div class="translation">（三個月嗎！？真是了不起的熱情。但這絕對完全值得。塗裝的質感跟舊化處理真的太逼真了，就像真的一樣。如果妳現在有一點時間，可以讓我拍幾張照片嗎？單眼相機已經準備就緒了。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                はい、もちろんです！ぜひ撮ってください。ウィッグを少し整えて、道具の剣を持たせてくださいね。よし、準備できました！キャラクターになりきって、いくつかポーズを決めますね。ここの光の当たり具合はどうですか？
+                <div class="translation">（好啊，當然可以！請一定要幫我拍。讓我稍微整理一下假髮，拿一下道具劍。好，準備好了！我要投入角色擺幾個姿勢囉。這裡的光線狀況可以嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                ここオアシス21の屋根の下は完璧な光ですよ。柔らかくて均一な光が綺麗に回っています。あ、そのままのポーズでキープしてください…完璧です！少し僕の左肩の方向を見ていただけますか…素晴らしい！もう一枚、少し微笑んで…最高です！おお、めちゃくちゃ綺麗に撮れていますよ。
+                <div class="translation">（這裡綠洲 21 屋頂下的光線很完美。柔和且均勻的光線分佈得很漂亮。啊，請保持這個姿勢... 完美！可以請妳稍微看著我左肩的方向嗎... 太棒了！再一張，稍微微笑... 讚啦！喔，拍得超級漂亮的喔。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                やったー！カメラの液晶画面を少し見てもいいですか？わあ、すごい！信じられないくらい綺麗です！カメラマンさん、本当に写真がお上手ですね。選んでくれたアングルのおかげで、衣装がさらに躍動感があるように見えます。本当にありがとうございます。
+                <div class="translation">（太棒了！我可以稍微看一下相機的液晶畫面嗎？哇，好厲害！漂亮到不敢置信！攝影師先生，你真的很會拍照呢。多虧了你選的角度，讓服裝看起來更有躍動感了。真的非常謝謝你。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                ありがとうございます！モデルさんがこれだけプロフェッショナルだと、撮影もすごく楽しいです。ちなみに、何という作品のキャラクターなんですか？有名なスポーツアニメということは知っているのですが、お名前を正確に確認したくて。
+                <div class="translation">（謝謝妳！當模特兒這麼專業時，拍攝也變得非常好玩。順帶一提，這是什麼作品的角色呢？雖然知道是很知名的運動動漫，但想確認一下正確的名字。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                そのチームのキャプテンのコスプレなんです！とても強くて頼りがいのある性格なので、本当に大好きなキャラクターなんですよ。ところで、名古屋で開催される世界コスプレサミットには、今回初めて参加されたんですか？
+                <div class="translation">（我是 Cos 那個隊伍的隊長！因為他有著非常堅強且可靠的性格，是我真的非常喜歡的角色喔。話說回來，在名古屋舉辦的世界 Cosplay 高峰會，你是第一次來參加嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                はい、そうなんです！一昨日に日本に着いたばかりなのですが、ここの熱気と盛り上がりは本当に凄まじいですね。こんなにたくさんの素晴らしいレイヤーさんを一目に見られる場所は他にないです。さきほどスケジュールを確認しているとおっしゃっていましたが、この後のパレードにも参加されるんですか？
+                <div class="translation">（是的，沒錯！前天才剛到日本，這裡的熱氣跟盛況真的太驚人了。能一口氣看到這麼多優秀 Cosplayer 的地方絕無僅有。妳剛剛說在確認行程，接下來的遊行妳也會參加嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                はい、参加しますよ！この後、大須観音からパレードがスタートするんです。とても暑くなりそうですが、イベントの中でいつも一番ワクワクする瞬間なんです。あ、忘れないうちに、インスタとかX（旧Twitter）のアカウントはありますか？ぜひSNSを交換しましょう！
+                <div class="translation">（對，我要參加喔！這之後遊行會從大須觀音開始。雖然看起來會非常熱，但這總是活動中讓人最興奮的瞬間。啊，趁著沒忘記，你有 Instagram 或 X 的帳號嗎？我們一定要交換一下 SNS！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                ぜひ！写真を編集してアップするときに、ぜひタグ付けさせていただきたいです。スマホでQRコードを出しますね。アカウント名は @Leo_Photo_WCS です。どうぞスキャンしてください！
+                <div class="translation">（一定要！修完圖上傳時，很希望能標記妳。我用手機顯示 QR code 喔。帳號名稱是 @Leo_Photo_WCS。請直接掃描吧！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                バッチリです、今フォローしました！私は @Sora_Cos です。写真の仕上がりをすごく楽しみにしていますね。ところで、名古屋は初めてとのことですが、もうお昼ご飯は食べましたか？重いカメラ機材を持って歩き回って、少し疲れているように見えます。
+                <div class="translation">（沒問題，我剛追蹤了！我是 @Sora_Cos。我非常期待照片沖印出來的效果呢。話說回來，聽說你是第一次來名古屋，已經吃過中餐了嗎？拿著沉重的相機設備走來走去，看起來有點累了呢。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                実は、朝ご飯を食べてから何も食べていないんです。たくさんのコスプレを見ていたら興奮しすぎてしまって！この近くで、あまり遠くない場所で食べられるおすすめのご当地グルメはありますか？
+                <div class="translation">（其實自從吃過早餐後就什麼都沒吃了。看到這麼多 Cosplay 實在太興奮了！這附近有什麼不用走太遠就能吃到的推薦在地美食嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                それならラッキーです！オアシス21のすぐ下の階や、近くの栄（さかえ）エリアには美味しいお店がたくさんありますよ。名古屋名物の「手羽先」は絶対に食べてみてください！甘辛いタレがかかっていてカリカリに揚がった鶏の手羽先で、体力を回復するのにぴったりですよ！
+                <div class="translation">（那真是太幸運了！綠洲 21 正下方的樓層，或是附近的榮區都有很多美味的店喔。名古屋名物的「手羽先」請一定要吃吃看！塗上甘甜辛辣的醬汁並炸得酥酥脆脆的雞翅，用來恢復體力是最合適的了！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                それを聞くだけでヨダレが出そうです、まさに今僕が必要としているものです。おすすめを教えていただき本当にありがとうございます。そして、写真を撮らせていただき重ねて感謝します。午後のパレード、頑張ってくださいね！
+                <div class="translation">（光聽那個感覺就要流口水了，那正是我現在需要的。真的很謝謝妳告訴我推薦的美食。然後，再次感謝妳讓我拍照。下午的遊行請加油喔！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                ありがとうございます！レオさん、お会いできて嬉しかったです。残りの世界コスプレサミットも存分に楽しんで、名古屋で最高の思い出を作ってくださいね。それでは、お気をつけて！
+                <div class="translation">（謝謝你！Leo先生，很高興認識你。接下來的世界 Cosplay 高峰會也要盡情享受，在名古屋留下最棒的回憶喔。那麼，一路上小心！）</div>
+            </div>
+        </div>
+
+        <h3>📝 拡張単語帳</h3>
+        <table>
+            <tr>
+                <th>単語 / 表現</th>
+                <th>読み方</th>
+                <th>中文解釋</th>
+                <th>例文</th>
+            </tr>
+            <tr>
+                <td><strong>こだわり</strong></td>
+                <td>こだわり</td>
+                <td>講究 / 堅持</td>
+                <td>衣装の細部へのこだわりが素晴らしい。</td>
+            </tr>
+            <tr>
+                <td><strong>ウェザリング</strong></td>
+                <td>うぇざりんぐ</td>
+                <td>（道具與衣服的）舊化、髒污處理</td>
+                <td>鎧にウェザリングを施してリアルにする。</td>
+            </tr>
+            <tr>
+                <td><strong>なりきって</strong></td>
+                <td>なりきって</td>
+                <td>完全化身為 / 投入角色</td>
+                <td>キャラになりきってポーズを決める。</td>
+            </tr>
+            <tr>
+                <td><strong>ご当地グルメ</strong></td>
+                <td>ごとうちぐるめ</td>
+                <td>在地特色美食</td>
+                <td>名古屋のご当地グルメを楽しみたい。</td>
+            </tr>
+            <tr>
+                <td><strong>仕上がり</strong></td>
+                <td>しあがり</td>
+                <td>成品 / 最終修圖產出的效果</td>
+                <td>写真の仕上がりを楽しみにしています。</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    function switchLanguage(lang) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+        
+        if(lang === 'en') {
+            document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+            document.getElementById('section-en').classList.add('active');
+        } else {
+            document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+            document.getElementById('section-ja').classList.add('active');
+        }
+    }
+
+    function speakText(lang) {
+        window.speechSynthesis.cancel();
+
+        let textContainerId = lang === 'en' ? 'text-en' : 'text-ja';
+        let container = document.getElementById(textContainerId);
+        let lines = container.querySelectorAll('.dialogue-line');
+        
+        lines.forEach(line => {
+            let clone = line.cloneNode(true);
+            let trans = clone.querySelector('.translation');
+            let spk = clone.querySelector('.speaker');
+            if(trans) trans.remove();
+            if(spk) spk.remove();
+            
+            let pureText = clone.innerText.trim();
+            let utterance = new SpeechSynthesisUtterance(pureText);
+            
+            if (lang === 'en') {
+                utterance.lang = 'en-US';
+                utterance.rate = 0.88; // 精準調校：略慢於常速，有利聽讀與跟讀
+            } else {
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.92;
+            }
+            window.speechSynthesis.speak(utterance);
+        });
+    }
+</script>
+
+</body>
+</html>

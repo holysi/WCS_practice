@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 08: Chatting About Our Favorite Anime! / 大好きなアニメを語ろう！</title>
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --text-color: #2c3e50;
+            --bg-color: #f3f0ff;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", "Helvetica", "Arial", "LiHei Pro", "Medium", "Microsoft JhengHei";
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 { color: var(--primary-color); margin-bottom: 5px; }
+        h2 { color: var(--secondary-color); font-size: 1.2rem; margin-top: 0; }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 2px solid var(--primary-color);
+            background-color: transparent;
+            color: var(--primary-color);
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .audio-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #e8e4f9;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .play-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .play-btn:hover { opacity: 0.9; }
+
+        .dialogue-box {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fafafa;
+            margin-bottom: 25px;
+        }
+
+        .dialogue-line {
+            margin-bottom: 18px;
+            border-left: 4px solid #ddd;
+            padding-left: 15px;
+        }
+
+        .dialogue-line.highlight {
+            border-left-color: var(--primary-color);
+        }
+
+        .speaker {
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .translation {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th { background-color: #e8e4f9; color: var(--text-color); }
+
+        @media (max-width: 600px) {
+            th, td { padding: 8px; font-size: 0.9rem; }
+            .tab-btn { padding: 8px 15px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Unit 08: Chatting About Our Favorite Anime!</h1>
+        <h2>深度交流喜歡的角色、探討神還原與經典動漫劇情（3-5分鐘精實特輯）</h2>
+    </header>
+
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchLanguage('en')">English Version</button>
+        <button class="tab-btn" onclick="switchLanguage('ja')">日本語セクション</button>
+    </div>
+
+    <!-- ================= 英文版頁面 ================= -->
+    <div id="section-en" class="content-section active">
+        <div class="audio-control">
+            <span>🔊 課文朗讀 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('en')">播放完整英文對話</button>
+        </div>
+
+        <h3>🗣️ Full Dialogue: Deep Otaku Talk at a Quiet Cafe</h3>
+        <div class="dialogue-box" id="text-en">
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Sora, now that we've ordered some refreshments, I have to tell you, earlier when you were posing as the team captain, I got actual goosebumps. You really nailed his aura. Is he your absolute favorite character from that sports anime series?
+                <div class="translation">（Sora，既然我們已經點了點心，我一定要跟妳說，剛才妳在扮演隊長擺姿勢的時候，我真的起了雞皮疙瘩。妳完美地展現了他的氣場。他是妳在那部運動動漫系列裡最頂尖的最愛角色嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Oh, thank you so much! Hearing that from a photographer means the world to me. Yes, he is definitely my "Oshi"—my number one favorite! I love how reliable, hardworking, and silently passionate he is. He isn't the flashiest player on the court, but he holds the whole team together like a solid anchor.
+                <div class="translation">（噢，非常謝謝你！能從攝影師口中聽到這句話對我來說意義重大。是的，他絕對 corner 我的「推（Oshi）」——我的一號最愛！我喜歡他是多麼地可靠、努力，且默默地充滿熱情。他不是球場上最耀眼的球員，但他像一個穩固的錨一樣把整個球隊凝聚在一起。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                I totally get it. That sports anime is an absolute masterpiece. The character development is so profound. My favorite dynamic is actually the intense rivalry and ultimate trust between the genius setter and the energetic middle blocker. Every time they pull off that super-fast attack, it gets my adrenaline pumping!
+                <div class="translation">（我完全懂。那部運動動漫絕對是神作。角色發展非常深刻。我最喜歡的動態其實是那位天才舉球員與充滿活力的副攻手之間，那種激烈的競爭意識與終極的信任。每次他們成功打出超快攻時，都會讓我腎上腺素飆升！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Right?! That combo is legendary! The way the story shows that "you can jump because I am here to back you up" is so emotional. It makes me cry every single time I rewatch the tournament arc. Which match was the most memorable one for you?
+                <div class="translation">（對吧？！那個組合簡直是傳奇！故事展現出「因為有我在背後撐著，你才能儘管起跳」的方式太令人動容了。每次我重溫全國大賽篇時，真的都會看一次哭一次。對你來說哪一場比賽最令你難忘？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Hands down, the match against the powerhouse school from Miyagi. The rallies were so long and intense. The animation quality during the final point, where the sound completely drops out and everything moves in slow motion... man, that was pure cinematic art. 
+                <div class="translation">（毫無疑問，是跟宮城縣那所強豪學校的對決。來回對攻拉鋸得又長又激烈。在最後一分時的動畫品質，聲音完全消失、一切都變成慢動作處理... 天哪，那純粹是電影藝術。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Oh, I know exactly which scene you mean! It was breathless. By the way, do you watch any dark fantasy anime as well? I am also heavily invested in series with overpowered main characters, like dark lords or supreme rulers of fantasy realms.
+                <div class="translation">（噢，我完全知道你說的是哪個畫面！那讓人屏息。順帶一提，你也看黑暗奇幻類的動漫嗎？我也非常沉迷於那些主角強度爆表（傲天）的系列，像是奇幻國度裡的魔王或至高無上的統治者。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Are you talking about series like Overlord? Because if you are, I am a massive fan! I absolutely love the dark, strategic world-building, and the loyalty of the floor guardians is just incredible. The contrast between the protagonist's inner monologue as a regular salaryman and his majestic outer appearance is hilarious yet epic.
+                <div class="translation">（妳是在說像《Overlord》這樣的系列嗎？如果是的話，我是個超級大粉絲！我絕對超愛那種黑暗、充滿策略的世界觀建立，而且階層守護者們的忠誠度簡直不可思議。主角內心作為一個普通上班族的內心獨白，與他外在莊嚴威嚴的形象之間的對比，既搞笑又史詩感十足。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Yes! Exactly! I actually planned to cosplay the pure-white devil overseer character next year, with the massive black wings. But the engineering required to make those wings look majestic and remain lightweight is a huge challenge. 
+                <div class="translation">（沒錯！就是那個！我其實計畫明年要 Cosplay 那位擁有巨大黑色羽翼的純白惡魔總管角色。但是，要讓那些翅膀看起來神聖莊嚴又維持輕量化，所需的工程結構是一個巨大的挑戰。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Oh, please do it! If you cosplay her, let me know immediately. I can already picture the ideal lighting setup. We could use heavy contrast, moody fluorescent lighting, and perhaps some fog effects to create that authentic, dark cinematic aesthetic. 
+                <div class="translation">（噢，請一定要出！如果妳 Cos 她的話，請立刻通知我。我腦海中已經浮現出理想的光影佈局了。我們可以用強烈的高對比、情緒化的螢光調性，甚至加一些煙霧特效，來營造那種正宗、黑暗的電影美學。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Wow, high-contrast fluorescent lighting? That sounds perfect for her vibe! It's so refreshing to meet a photographer who understands both sports anime passion and dark fantasy aesthetics. Talking with you makes me want to start working on my next costume right away!
+                <div class="translation">（哇，高對比螢光？這聽起來對她的氣場來說太完美了！能遇到一位既懂運動動漫的熱血、又懂黑暗奇幻美學的攝影師，真的太讓人振奮了。跟你聊天讓我現在就想立刻動工做我的下一套服裝！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Haha, that's the power of the World Cosplay Summit! It brings passionate creators together. Let's stay in touch on X, and whenever you start working on those wings, you can share the progress. I'd love to see how you engineer it.
+                <div class="translation">（哈哈，這就是世界 Cosplay 高峰會的力量！它把充滿熱情的創作者聚集在一起。我們在 X 上保持聯絡，不論妳什麼時候開始著手做那對翅膀，都可以分享進度。我很想看看妳是怎麼把它結構設計出來的。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Deal! I'll make sure to post my progress logs. Thanks for the inspiring chat, Leo. It's the perfect ending to an amazing convention day!
+                <div class="translation">（一言為定！我一定會發布我的製作日誌。謝謝這場帶給我靈感的對話，Leo。這為超讚的展場一天劃下了完美的句點！）</div>
+            </div>
+        </div>
+
+        <h3>📝 Key Vocabulary</h3>
+        <table>
+            <tr>
+                <th>Word / Phrase</th>
+                <th>中文解釋</th>
+                <th>例句</th>
+            </tr>
+            <tr>
+                <td><strong>Nailed the aura</strong></td>
+                <td>完美展現氣場/神韻</td>
+                <td>You completely nailed the aura of the dark lord!</td>
+            </tr>
+            <tr>
+                <td><strong>Masterpiece</strong></td>
+                <td>神作 / 傑作</td>
+                <td>This sports anime is an absolute masterpiece.</td>
+            </tr>
+            <tr>
+                <td><strong>Adrenaline pumping</strong></td>
+                <td>讓人腎上腺素飆升</td>
+                <td>The final match kept my adrenaline pumping.</td>
+            </tr>
+            <tr>
+                <td><strong>Overpowered (OP)</strong></td>
+                <td>強度爆表 / 開外掛 / 傲天</td>
+                <td>The main character in that fantasy anime is so overpowered.</td>
+            </tr>
+            <tr>
+                <td><strong>Cinematic aesthetic</strong></td>
+                <td>電影感美學</td>
+                <td>The photographer used low-key lighting to achieve a cinematic aesthetic.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ================= 日文版頁面 ================= -->
+    <div id="section-ja" class="content-section">
+        <div class="audio-control">
+            <span>🔊 本文朗読 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('ja')">日本語ダイアログを再生</button>
+        </div>
+
+        <h3>🗣️ 対話：カフェでの熱いオタクトーク・好きな作品やキャラの解釈</h3>
+        <div class="dialogue-box" id="text-ja">
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                ソラさん、注文したスイーツも届いたところで改めて言わせてください。さっきチームの主将（しゅしょう）のポーズを決めていた時、僕、本当に鳥肌（とりはだ）が立ちましたよ。オーラが完全に再現されていました。あのキャラクターは、あのスポーツアニメの中で一番の推しなんですか？
+                <div class="translation">（Sora，既然我們已經點了點心，我外定要跟妳說，剛才妳在扮演隊長擺姿勢的時候，我真的起了雞皮疙瘩。妳完美地展現了他的氣場。他是妳在那部運動動漫系列裡最頂尖的最愛角色嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                わあ、ありがとうございます！カメラマンさんにそう言ってもらえるなんて、レイヤー冥利（みょうり）に尽きます。はい、彼は間違いなく私の「最推し（さいおし）」です！頼りがいがあって、努力家で、内に秘めた情熱があるところが大好きなんです。コート上で一番目立つ選手ではないですが、大黒柱（だいこくばしら）としてチーム全体を支えているんですよね。
+                <div class="translation">（噢，非常謝謝你！能從攝影師口中聽到這句話對我來說意義重大。是的，他絕對是我的「最推（Oshi）」——我的一號最愛！我喜歡他是多麼地可靠、努力，且默默地充滿熱情。他不是球場上最耀眼的球員，但他像大黑柱一樣把整個球隊凝聚在一起。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                本当によく分かります。あのスポーツアニメは本当に神作（かみさく）ですよね。キャラクターの心理描写が深いです。僕が一番好きな関係性は、天才セッターと元気なミドルブロッカーの間の、激しいライバル意識と究極の信頼感なんです。二人があの超変人速攻（へんじんそっこう）を決めるたびに、アドレナリンが溢れ出ます！
+                <div class="translation">（我完全懂。那部運動動漫絕對是神作。角色發展非常深刻。我最喜歡的動態其實是那位天才舉球員與充滿活力的副攻手之間，那種激烈的競爭意識與終極的信任。每次他們成功打出超快攻時，都會讓我腎上腺素飆升！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                ですよね！？あのコンビは伝説（レジェンド）です！ストーリーの中で「俺がここにいるから、お前は勝手に跳べ」っていう信頼関係の描き方がエモすぎて。全国大会編を再放送や見返すたびに、毎回必ず号泣（ごうきゅう）しちゃいます。レオさんはどの試合が一番印象に残っていますか？
+                <div class="translation">（對吧？！那個組合簡直是傳奇！故事展現出「因為有我在背後撐著，你才能儘管起跳」的方式太令人動容了。每次我重溫全國大賽篇時，真的都會看一次哭一次。對你來說哪一場比賽最令你難忘？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                間違いなく、宮城の強豪校との試合ですね。ラリーが本当に長くて息が詰まりそうでした。決着の最後の1ポイントの時、完全に音が消えて、すべてがスローモーションになるあの演出のクオリティ…あれは純粋な映画芸術でしたよ。
+                <div class="translation">（毫無疑問，是跟宮城縣那所強豪學校的對決。來回對攻拉鋸得又長又激烈。在最後一分時的動畫品質，聲音完全消失、一切都變成慢動作處理... 天哪，那純粹是電影藝術。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                あ、そのシーン、めちゃくちゃ分かります！息をするのを忘れるくらいでしたよね。ところで、レオさんはダークファンタジー系のアニメも観ますか？私は、異世界の魔王とか至高の統治者みたいな、主人公が「俺TUEEE（おれつえー・最強）」な作品にもすごくハマっているんです。
+                <div class="translation">（噢，我完全知道你說的是哪個畫面！那讓人屏息。順帶一提，你也看黑暗奇幻類的動漫嗎？我也非常沉迷於那些主角強度爆表（俺TUEEE）的系列，像是奇幻國度裡的魔王或至高無上的統治者。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                それって、もしかして『オーバーロード』みたいな作品のことですか？もしそうなら、僕も大ファンです！あのダークで戦略的な世界観が最高ですし、階層守護者（かいそうしゅごしゃ）たちの忠誠心が凄まじいですよね。主人公の中身が普通のサラリーマンで、心の声と外見の威厳ある姿とのギャップが面白くて、かつシリアスで引き込まれます。
+                <div class="translation">（妳是在說像《Overlord》這樣的系列嗎？如果是的話，我是個超級大粉絲！我絕對超愛那種黑暗、充滿策略的世界觀建立，而且階層守護者們的忠誠度簡直不可思議。主角內心作為一個普通上班族的內心獨白，與他外在莊嚴威嚴的形象之間的對比，既搞笑又史詩感十足。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                そう、それです！実は来年、あの大きな黒い翼を持った純白の悪魔の総括（守護者統括）キャラクターのコスプレを計画しているんです。でも、あの翼を威厳高く見せつつ、軽く作るための造形構造（エンジニアリング）が、かなりの難問で。
+                <div class="translation">（沒錯！就是那個！我其實計畫明年要 Cosplay 那位擁有巨大黑色羽翼的純白惡魔總管角色。但是，要讓那些翅膀看起來神聖莊嚴又維持輕量化，所需的工程結構是一個巨大的挑戰。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                おお、ぜひやってください！もし彼女のコスをする時は、すぐに僕に教えてくださいね。理想のライティングがもう頭に浮かんでいます。強いコントラスト（明暗差）をつけて、蛍光灯のような冷たい色味（サイバー・ネオン調）を回して、スモークを少し焚けば、本物のダークな「シネマティック美学」が表現できますよ。
+                <div class="translation">（噢，請一定要出！如果妳 Cos 她的話，請立刻通知我。我腦海中已經浮現出理想的光影佈局了。我們可以用強烈的高對比、螢光調性，甚至加一些煙霧特效，來營造那種正宗、黑暗的電影美學。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                うわあ、高コントラストな蛍光灯ライティング！彼女の世界観に絶対にマッチしますね！スポーツアニメの熱い情熱と、ダークファンタジーの美学の両方を分かってくれるカメラマンさんに出会えるなんて、本当に刺激的です。レオさんと話していると、今すぐ次の衣装を作り始めたくなっちゃいます！
+                <div class="translation">（哇，高對比螢光？這聽起來對她的氣場來說太完美了！能遇到一位既懂運動動漫的熱血、又懂黑暗奇幻美學的攝影師，真的太讓人振奮了。跟你聊天讓我現在就想立刻動工做我的下一套服裝！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                ハハ、それこそが世界コスプレサミットの魔力ですね！情熱を持ったクリエイター同士を引き合わせてくれるんです。Xで繋がっていますから、あの翼の制作を始めたら、いつでも進捗をシェアしてくださいね。どうやって構造を設計するのか、すごく見たいです。
+                <div class="translation">（哈哈，這就是世界 Cosplay 高峰會的力量！它把充滿熱情的創作者聚集在一起。我們在 X 上保持聯絡，不論妳什麼時候開始著手做那對翅膀，都可以分享進度。我很想看看妳是怎麼把它結構設計出來的。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                約束です！制作ログを必ずポストしますね。インスピレーションが湧く楽しいお話をありがとうございました、レオさん。最高のイベントの1日目の、最高の締めくくりになりました！
+                <div class="translation">（一言為定！我外定會發布我的製作日誌。謝謝這場帶給我靈感的對話，Leo先生。這為超讚的展場一天劃下了完美的句點！）</div>
+            </div>
+        </div>
+
+        <h3>📝 重要な単語帳</h3>
+        <table>
+            <tr>
+                <th>単語 / 表現</th>
+                <th>読み方</th>
+                <th>中文解釋</th>
+                <th>例文</th>
+            </tr>
+            <tr>
+                <td><strong>最推し</strong></td>
+                <td>さいおし</td>
+                <td>本命 / 第一推的角色</td>
+                <td>私の最推しは、このチームの主将です。</td>
+            </tr>
+            <tr>
+                <td><strong>神作</strong></td>
+                <td>かみさく</td>
+                <td>神作 / 頂級傑作</td>
+                <td>このアニメは作画もストーリーも神作だ。</td>
+            </tr>
+            <tr>
+                <td><strong>俺TUEEE</strong></td>
+                <td>おれつえー</td>
+                <td>主角強度爆表 / 開掛（傲天系）作品</td>
+                <td>異世界転生系の俺TUEEEアニメが好きです。</td>
+            </tr>
+            <tr>
+                <td><strong>ギャップ</strong></td>
+                <td>ぎゃっぷ</td>
+                <td>反差 / 內外不一致的萌點</td>
+                <td>普段はクールなのに、実は甘党というギャップが良い。</td>
+            </tr>
+            <tr>
+                <td><strong>進捗</strong></td>
+                <td>しんちょく</td>
+                <td>（衣服或道具製作的）進度</td>
+                <td>衣装制作の進捗をハッシュタグで報告する。</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    function switchLanguage(lang) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+        
+        if(lang === 'en') {
+            document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+            document.getElementById('section-en').classList.add('active');
+        } else {
+            document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+            document.getElementById('section-ja').classList.add('active');
+        }
+    }
+
+    function speakText(lang) {
+        window.speechSynthesis.cancel();
+
+        let textContainerId = lang === 'en' ? 'text-en' : 'text-ja';
+        let container = document.getElementById(textContainerId);
+        let lines = container.querySelectorAll('.dialogue-line');
+        
+        lines.forEach(line => {
+            let clone = line.cloneNode(true);
+            let trans = clone.querySelector('.translation');
+            let spk = clone.querySelector('.speaker');
+            if(trans) trans.remove();
+            if(spk) spk.remove();
+            
+            let pureText = clone.innerText.trim();
+            let utterance = new SpeechSynthesisUtterance(pureText);
+            
+            if (lang === 'en') {
+                utterance.lang = 'en-US';
+                utterance.rate = 0.88; 
+            } else {
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.92;
+            }
+            window.speechSynthesis.speak(utterance);
+        });
+    }
+</script>
+
+</body>
+</html>

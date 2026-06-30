@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 04: Let's Exchange Social Media! / SNSを交換しよう！</title>
+    <style>
+        :root {
+            --primary-color: #00a8ff;
+            --secondary-color: #3f51b5;
+            --text-color: #2c3e50;
+            --bg-color: #f0f4f8;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", "Helvetica", "Arial", "LiHei Pro", "Medium", "Microsoft JhengHei";
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 { color: var(--secondary-color); margin-bottom: 5px; }
+        h2 { color: var(--primary-color); font-size: 1.2rem; margin-top: 0; }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 2px solid var(--secondary-color);
+            background-color: transparent;
+            color: var(--secondary-color);
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .audio-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #e1f5fe;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .play-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .play-btn:hover { opacity: 0.9; }
+
+        .dialogue-box {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fafafa;
+            margin-bottom: 25px;
+        }
+
+        .dialogue-line {
+            margin-bottom: 18px;
+            border-left: 4px solid #ddd;
+            padding-left: 15px;
+        }
+
+        .dialogue-line.highlight {
+            border-left-color: var(--primary-color);
+        }
+
+        .speaker {
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .translation {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th { background-color: #e1f5fe; color: var(--text-color); }
+
+        @media (max-width: 600px) {
+            th, td { padding: 8px; font-size: 0.9rem; }
+            .tab-btn { padding: 8px 15px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Unit 04: Let's Exchange Social Media!</h1>
+        <h2>互換 X/Twitter、Instagram 與標記 (Tag) 對方的正確禮儀（3-5分鐘精實特輯）</h2>
+    </header>
+
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchLanguage('en')">English Version</button>
+        <button class="tab-btn" onclick="switchLanguage('ja')">日本語セクション</button>
+    </div>
+
+    <!-- ================= 英文版頁面 ================= -->
+    <div id="section-en" class="content-section active">
+        <div class="audio-control">
+            <span>🔊 課文朗讀 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('en')">播放完整英文對話</button>
+        </div>
+
+        <h3>🗣️ Full Dialogue: Exchanging Handles and Social Media Etiquette</h3>
+        <div class="dialogue-box" id="text-en">
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Hey Sora, before you head over to the parade preparation area, can we quickly exchange social media handles? I want to make sure I can send you the unedited preview files later tonight.
+                <div class="translation">（嘿 Sora，在妳前往遊行準備區之前，我們可以快速互換一下社群媒體帳號嗎？我希望能確保今晚晚點可以把未修圖的預覽檔寄給妳。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Oh, definitely! That would be fantastic. Are you more active on Instagram or X? Most Japanese cosplayers use X, formerly known as Twitter, for the cosplay community, but I use Instagram as my main portfolio.
+                <div class="translation">（噢，一定要的！那太棒了。你比較常使用 Instagram 還是 X？多數日本 Cosplayer 在 Cos 圈都是用 X（前身為 Twitter），但我把 Instagram 當作我的主要作品集。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                I actually use both! For photography, I usually upload the full-resolution photos to Google Drive first, and then I share the link with you via direct message. Which platform would be more convenient for you to receive the link?
+                <div class="translation">（其實我兩個都有用！拍照的部分，我通常會先把高解析度的照片上傳到 Google 雲端硬碟，然後透過私訊把連結分享給妳。妳用哪個平台接收連結會比較方便？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                X would be perfect for direct messages. Let me open my app and display my QR code. Here you go, just scan it! My handle is @Sora_Cos. What is your name on X?
+                <div class="translation">（用 X 收私訊完美。讓我打開 App 並顯示我的 QR code。給你，直接掃描就可以了！我的帳號是 @Sora_Cos。你在 X 上的名字是什麼？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Got it, scanned! I am @Leo_Photo_WCS. I just hit the follow button. Could you also tell me your Instagram handle? I'd love to follow your main portfolio page as well.
+                <div class="translation">（收到，掃好了！我是 @Leo_Photo_WCS。我剛按下追蹤鈕了。妳可以也告訴我妳的 Instagram 帳號嗎？我也很想追蹤妳的主要作品集頁面。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Sure! My Instagram handle is exactly the same, @Sora_Cos. Just let me refresh my app... ah, there you are! I just followed you back on both platforms. By the way, what is your policy regarding photo credits and tagging when I post your photos online?
+                <div class="translation">（當然！我的 Instagram 帳號完全一樣，是 @Sora_Cos。讓我重新整理一下 App... 啊，看到你了！我剛剛在兩個平台上都回追你了。順帶一提，當我在網路上發你拍的照片時，關於攝影師標註和 Tag 的規定是什麼呢？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Thanks for asking! I really appreciate your politeness. When you post the final edited photos, please feel free to tag my account directly in the image, or just write "Photo by @Leo_Photo_WCS" in your caption. Also, do you mind if I post a few shots on my own photography page?
+                <div class="translation">（謝謝妳特地詢問！我非常感激妳的禮貌。當妳發布最終修好的照片時，請隨意直接在圖片中 Tag 我的帳號，或者在文案裡寫「Photo by @Leo_Photo_WCS」即可。另外，妳介意我也在我的攝影頁面上發幾張照片嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                I don't mind at all! You can absolutely post them. However, could you please send me the photos to let me look over them before you publish them? I just want to ensure that my expressions look natural and that my wig hairline isn't showing too much.
+                <div class="translation">（我完全不介意！你絕對可以發。不過，在發布之前，可以請你先發照片讓我過目一下嗎？我只是想確保我的表情看起來很自然，而且假髮的髮際線不會露出來太多。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Of course! That's standard etiquette. I always let cosplayers choose their preferred shots before I do any advanced retouching. I will send you a preview gallery tonight. Once you pick your favorites, I'll start working on color grading and skin retouching.
+                <div class="translation">（當然！這是標準禮儀。在做任何進階修圖之前，我總是會讓 Cosplayer 先挑選他們偏好的照片。我今晚會寄一個預覽相簿給妳。一旦妳選好喜歡的，我就會開始進行調色和皮膚精修。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                You are so professional and considerate, Leo! Some photographers just post everything without asking, which can be a bit stressful. When you upload the photos on X, remember to use the official event hashtag #WCS2026 so more people can discover your amazing work.
+                <div class="translation">（Leo，你真的太專業又體貼了！有些攝影師沒問就直接把所有東西都發出去，那真的會讓人有點壓力。當你在 X 上傳照片時，記得要用官方活動的 Hashtag #WCS2026，這樣更多人才能發現你超讚的作品。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Good call! I will definitely use the official hashtag. I'll make sure to get the preview to you by midnight. Have a wonderful time at the parade, Sora! Don't forget to stay hydrated in this heat.
+                <div class="translation">（好提議！我一定會用官方 Hashtag。我會確保在午夜前把預覽檔傳給妳。祝妳在遊行玩得開心，Sora！在這麼熱的天氣裡別忘了隨時補充水分。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Thank you so much! I'll be looking forward to your message tonight. See you on social media, Leo! Bye!
+                <div class="translation">（非常謝謝你！我會期待你今晚的訊息。網路上見囉，Leo！掰掰！）</div>
+            </div>
+        </div>
+
+        <h3>📝 Key Vocabulary</h3>
+        <table>
+            <tr>
+                <th>Word / Phrase</th>
+                <th>中文解釋</th>
+                <th>例句</th>
+            </tr>
+            <tr>
+                <td><strong>Handle</strong></td>
+                <td>社群帳號（以@開頭的用戶名）</td>
+                <td>Please write your X handle on this card.</td>
+            </tr>
+            <tr>
+                <td><strong>Photo credit</strong></td>
+                <td>標註攝影師 / 圖片來源註明</td>
+                <td>Always give proper photo credit to the photographer.</td>
+            </tr>
+            <tr>
+                <td><strong>Standard etiquette</strong></td>
+                <td>標準禮儀 / 常規規範</td>
+                <td>Asking for permission is standard etiquette.</td>
+            </tr>
+            <tr>
+                <td><strong>Advanced retouching</strong></td>
+                <td>進階精修 / 修圖</td>
+                <td>Skin retouching is part of advanced retouching.</td>
+            </tr>
+            <tr>
+                <td><strong>Hashtag</strong></td>
+                <td>主題標籤（#號鍵）</td>
+                <td>Don't forget to include the event hashtag.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ================= 日文版頁面 ================= -->
+    <div id="section-ja" class="content-section">
+        <div class="audio-control">
+            <span>🔊 本文朗読 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('ja')">日本語ダイアログを再生</button>
+        </div>
+
+        <h3>🗣️ 対話：SNSアカウントの交換とレイヤー・カメラマン間のネットマナー</h3>
+        <div class="dialogue-box" id="text-ja">
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                ソラさん、パレードの準備エリアに行かれる前に、手短にSNSのアカウントを交換してもよろしいですか？今夜遅くに、修正前のプレビュー用データ（速報データ）をお送りできるようにしておきたくて。
+                <div class="translation">（嘿 Sora，在妳前往遊行準備區之前，我們可以快速互換一下社群媒體帳號嗎？我希望能確保今晚晚點可以把未修圖的預覽檔（速報數據）寄給妳。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                あ、ぜひ！ありがたいです。レオさんはインスタとX（旧Twitter）のどちらをメインに使っていますか？日本のコスプレ界隈（かいわい）では連絡用にXを使うのが一般的ですけど、私はインスタをポートフォリオ（作品集）として使っています。
+                <div class="translation">（噢，一言為定！那太棒了。Leo先生比較常使用 Instagram 還是 X？多數日本 Cos 圈在聯繫上都是用 X，但我把 Instagram 當作我的 Portfolio（作品集）。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                実は両方使っています！撮影した写真は、いつも高画質のまま一度Googleドライブにアップロードして、そのリンクをダイレクトメッセージ（DM）で共有しているんです。リンクを受け取るのはどちらのプラットフォームが便利ですか？
+                <div class="translation">（其實我兩個都有用！拍照的部分，我通常會先把高畫質照片上傳到 Google 雲端硬碟，然後透過 DM（私訊）把連結分享給妳。妳用哪個平台接收連結會比較方便？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                DMのやり取りならXが一番ありがたいです。アプリを開いてQRコードを出しますね。はい、どうぞ！スキャンしてください。アカウント名は @Sora_Cos です。レオさんのXのお名前は何ですか？
+                <div class="translation">（私訊往來的話 X 最理想。我打開 App 顯示 QR code 喔。好，請！掃描就可以。帳號名稱是 @Sora_Cos。Leo先生的 X 名字是什麼？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                はい、スキャンできました！僕は @Leo_Photo_WCS です。今フォローしました。もしよろしければ、インスタのアカウントも教えていただけますか？メインの作品集のページもぜひ拝見したくて。
+                <div class="translation">（好，掃瞄好了！我是 @Leo_Photo_WCS。我剛按下追蹤了。如果可以的話，也能告訴我妳的 Instagram 帳號嗎？我也很想拜讀妳的主要作品集網頁。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                もちろんです！インスタも全く同じIDで @Sora_Cos ですよ。ちょっとアプリを更新（リフレッシュ）しますね…あ、通知が来ました！両方ともフォロバ（フォローバック）させていただきました。ちなみに、私が写真をネットにアップする際、クレジット表記やタグ付けのルールはありますか？
+                <div class="translation">（當然！Instagram 也是完全一樣的 ID @Sora_Cos。稍微重新整理一下 App... 啊，通知來了！兩個平台我都回追（フォロバ）妳了。順帶一提，當我把照片上傳到網路時，有什麼來源標記（クレジット表記）或是 Tag 的規則嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                聞いてくださってありがとうございます！お気遣い本当に嬉しいです。最終的なレタッチ済み写真を投稿する時は、画像に直接僕のアカウントをタグ付けしていただくか、キャプションに「お写真：@Leo_Photo_WCS」と書いていただければ十分です。あと、僕のカメラマン用アカウントでも数枚アップしても大丈夫でしょうか？
+                <div class="translation">（謝謝妳特地詢問！妳的心意真的讓我很高興。投稿最終修好的照片時，直接在圖片裡 Tag 我的帳號，或者是文案寫「お写真：@Leo_Photo_WCS」就很足夠了。另外，在我自己的攝影師帳號也發幾張照片沒關係嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                はい、全然大丈夫です！ぜひアップしてください。ただ、写真を公開する前に、一度私にDMで写真を見せて（確認させて）いただけますか？変な表情になっていないかとか、ウィッグの生え際（はえぎわ）が目立ちすぎていないかだけチェックしたくて。
+                <div class="translation">（好啊，完全沒問題！請一定要上傳。不過，在照片公開之前，可以先用 DM 讓我確認一下照片嗎？只是想檢查看看有沒有變成怪表情，或是假髮的生え際（髮際線）太過明顯之類的。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                もちろんです！それが当然のマナー（暗黙の了解）ですよね。本格的な肌レタッチや色調補正（しきちょうほせい）に入る前に、レイヤーさんにセレクトしてもらうのが僕の基本スタイルです。今夜中に選別用のギャラリーをお送りしますね。ソラさんのお気に入りが決まったら、現像作業を進めます。
+                <div class="translation">（當然！那是理所當然的禮儀（暗默的了解）呢。在進入正式的皮膚精修與色調補正之前，讓雷ヤー（Coser）自己做挑選是我的基本風格。今夜會把挑選用的網頁相簿寄給妳。等 Sora 挑好喜歡的之後，我就會開始進行修圖現像作業。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                レオさんは本当にプロフェッショナルで、配慮（はいりょ）が行き届いていますね！カメラマンさんの中には確認なしで何でもアップしちゃう人もいて、少し困ることがあるんです。Xに投稿するときは、公式ハッシュタグの「#WCS2026」をつけると、たくさんの人に作品を見てもらえますよ！
+                <div class="translation">（Leo先生真的很專業，而且體貼入微呢！有些攝影師在未確認的情況下就把什麼都上傳上去，有時會讓人有點困擾。在 X 投稿時，加上官方主題標籤「#WCS2026」的話，就能讓很多很多人看到作品喔！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                いいアドバイスをありがとうございます！公式ハッシュタグ、絶対に付けますね。では、夜の12時までにプレビューを送れるようにします。ソラさん、午後のパレード思いっきり楽しんできてください！この暑さなので熱中症対策（ねっちゅうしょうたいさく）と水分補給を忘れずに！
+                <div class="translation">（謝謝妳給的好建議！官方 Hashtag 我一定會加的。那麼，我會爭取在晚上12點前把預覽檔傳過去。Sora，下午的遊行請盡情地去享受吧！因為這麼熱，不要忘記防中暑（熱中症對策）跟補充水分喔！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                ありがとうございます！今夜のメッセージを楽しみに待っていますね。それではレオさん、またネットで！バイバイ！
+                <div class="translation">（謝謝你！我會滿心期待今晚的訊息。那麼Leo先生，我們網路上見！拜拜！）</div>
+            </div>
+        </div>
+
+        <h3>📝 重要な単語帳</h3>
+        <table>
+            <tr>
+                <th>単語 / 表現</th>
+                <th>読み方</th>
+                <th>中文解釋</th>
+                <th>例文</th>
+            </tr>
+            <tr>
+                <td><strong>界隈</strong></td>
+                <td>かいわい</td>
+                <td>圈子 / 領域（如コスプレ界隈）</td>
+                <td>コスプレ界隈のルールを学ぶ。</td>
+            </tr>
+            <tr>
+                <td><strong>フォロバ</strong></td>
+                <td>ふぉろば</td>
+                <td>回追（Follow back 的簡稱）</td>
+                <td>アカウントをフォローしたのでフォロバする。</td>
+            </tr>
+            <tr>
+                <td><strong>クレジット表記</strong></td>
+                <td>くれじっとひょうき</td>
+                <td>標註來源 / 註明作者</td>
+                <td>写真を投稿する際はクレジット表記が必要だ。</td>
+            </tr>
+            <tr>
+                <td><strong>生え際</strong></td>
+                <td>はえぎわ</td>
+                <td>（假髮或額頭的）髮際線</td>
+                <td>ウィッグの生え際を自然に見せる。</td>
+            </tr>
+            <tr>
+                <td><strong>熱中症対策</strong></td>
+                <td>ねっちゅうしょうたいさく</td>
+                <td>防中暑措施（夏日場次必備）</td>
+                <td>夏コミでは熱中症対策が欠かせない。</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    function switchLanguage(lang) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+        
+        if(lang === 'en') {
+            document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+            document.getElementById('section-en').classList.add('active');
+        } else {
+            document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+            document.getElementById('section-ja').classList.add('active');
+        }
+    }
+
+    function speakText(lang) {
+        window.speechSynthesis.cancel();
+
+        let textContainerId = lang === 'en' ? 'text-en' : 'text-ja';
+        let container = document.getElementById(textContainerId);
+        let lines = container.querySelectorAll('.dialogue-line');
+        
+        lines.forEach(line => {
+            let clone = line.cloneNode(true);
+            let trans = clone.querySelector('.translation');
+            let spk = clone.querySelector('.speaker');
+            if(trans) trans.remove();
+            if(spk) spk.remove();
+            
+            let pureText = clone.innerText.trim();
+            let utterance = new SpeechSynthesisUtterance(pureText);
+            
+            if (lang === 'en') {
+                utterance.lang = 'en-US';
+                utterance.rate = 0.88; 
+            } else {
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.92;
+            }
+            window.speechSynthesis.speak(utterance);
+        });
+    }
+</script>
+
+</body>
+</html>

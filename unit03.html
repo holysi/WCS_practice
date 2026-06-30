@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 03: Did You Make This Yourself? / この衣装、手作りですか？</title>
+    <style>
+        :root {
+            --primary-color: #ff9f43;
+            --secondary-color: #ee5253;
+            --text-color: #2c3e50;
+            --bg-color: #fff5f5;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", "Helvetica", "Arial", "LiHei Pro", "Medium", "Microsoft JhengHei";
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 { color: var(--secondary-color); margin-bottom: 5px; }
+        h2 { color: var(--primary-color); font-size: 1.2rem; margin-top: 0; }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 2px solid var(--secondary-color);
+            background-color: transparent;
+            color: var(--secondary-color);
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .audio-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffeaea;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .play-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .play-btn:hover { opacity: 0.9; }
+
+        .dialogue-box {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fafafa;
+            margin-bottom: 25px;
+        }
+
+        .dialogue-line {
+            margin-bottom: 18px;
+            border-left: 4px solid #ddd;
+            padding-left: 15px;
+        }
+
+        .dialogue-line.highlight {
+            border-left-color: var(--primary-color);
+        }
+
+        .speaker {
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .translation {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th { background-color: #ffeaea; color: var(--text-color); }
+
+        @media (max-width: 600px) {
+            th, td { padding: 8px; font-size: 0.9rem; }
+            .tab-btn { padding: 8px 15px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Unit 03: Did You Make This Yourself?</h1>
+        <h2>聊服裝道具製作、材料選擇（3-5分鐘精實特輯）</h2>
+    </header>
+
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchLanguage('en')">English Version</button>
+        <button class="tab-btn" onclick="switchLanguage('ja')">日本語セクション</button>
+    </div>
+
+    <!-- ================= 英文版頁面 ================= -->
+    <div id="section-en" class="content-section active">
+        <div class="audio-control">
+            <span>🔊 課文朗讀 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('en')">播放完整英文對話</button>
+        </div>
+
+        <h3>🗣️ Full Dialogue: Discussing Craftsmanship and Materials</h3>
+        <div class="dialogue-box" id="text-en">
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Hey Sora, I was just looking over the photos we took earlier, and I still can't get over how detailed your armor looks. Did you actually make this costume entirely from scratch by yourself?
+                <div class="translation">（嘿 Sora，我剛才在看我們之前拍的照片，我還是對妳盔甲的細節還原度感到驚嘆。這套衣服真的完全是妳自己從零開始做出來的嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Yes, I did! Every single piece. I am a self-made cosplayer, so I really enjoy the crafting process. It is hard work, but seeing the final result makes all the sweat and tears worth it.
+                <div class="translation">（對啊，是我做的！每一塊都是。我是個動手派（自製衣服道具）的 Cosplayer，所以我非常享受製作的過程。這真的很辛苦，但看到最終的成果，所有的汗水和淚水就都值得了。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                That is incredibly impressive. What material did you use for the main breastplate and the shoulder guards? It looks like real metallic plating, but I assume it's lightweight so you can wear it all day.
+                <div class="translation">（那真的令人印象非常深刻。妳的胸甲跟護肩是用什麼材質做的？它看起來像真的金屬片，但我猜它應該很輕，這樣妳才能穿一整天。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                You guessed right! The base structure is made of high-density EVA foam. It's a lifesaver for armor cosplays because it's flexible, durable, and extremely lightweight. I used a heat gun to shape the foam and curves, and then I glued the pieces together using contact cement.
+                <div class="translation">（你猜對了！基礎結構是用高密度的 EVA 泡棉做的。這對盔甲類 Cosplay 來說簡直是救星，因為它有彈性、耐用而且非常輕。我用熱風槍來為泡棉定型和做出弧度，然後用強力膠把這些部件黏在一起。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Wow, EVA foam? How did you get that amazing metallic texture then? The paint job has a brilliant metallic sheen, and even the scratches and battle-worn dents look so authentic!
+                <div class="translation">（哇，EVA 泡棉？那妳是怎麼做出那種神奇的金屬質感的？漆面有著亮麗的金屬光澤，甚至連刮痕和戰損凹痕看起來都太真實了！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Thank you! That's the result of many layers of priming and painting. First, I sealed the foam with a few coats of Plasti Dip. If you don't seal it, the foam will just absorb all the paint. After that, I sprayed a black glossy base coat, followed by silver acrylic paint. For the scratches, I used a technique called dry brushing with steel pigment.
+                <div class="translation">（謝謝你！那是經過好幾層打底和上漆的成果。首先，我用幾層橡膠噴漆（Plasti Dip）把泡棉表面密封起來。如果不密封的話，泡棉會把所有油漆都吸進去。之後，我噴了一層黑色光澤底漆，接著塗上銀色壓克力顏料。至於刮痕，我是用一種叫做「乾刷」的技巧，加上鋼鐵色顏料做出來的。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Dry brushing! I've heard of that for miniature model painting, but doing it on a life-sized scale must take forever. What about the intricate symbols on your gauntlets? They look too perfect to be carved by hand.
+                <div class="translation">（乾刷！我有聽過微縮模型繪製會用這個，但在真人比例的道具上做這個一定花超多時間。那妳護腕上錯綜複雜的符號呢？它們看起來太完美了，不太像是手工雕刻的。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Sharp eye! Those parts are actually 3D printed. I used a 3D modeling software to design the gauntlet details based on references from the anime. Then I printed them out using PLA filament. However, 3D printing requires a lot of post-processing. I had to spend days sanding down the layer lines and filling them with wood filler before painting.
+                <div class="translation">（好眼力！那些部分其實是 3D 列印出來的。我用 3D 模型軟體根據動漫裡的參考圖設計了護腕細節。然後用 PLA 耗材把它們印出來。不過，3D 列印需要大量的後製處理。我必須花好幾天的時間把列印層線砂紙磨平，並在塗裝前用木工補土把它們填平。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Ah, post-processing! People always think 3D printing is magic, but they forget about the endless sanding involved. What about the fabric parts? The cape and the tunic look like they require expert tailoring. Did you sew those as well?
+                <div class="translation">（啊，後製處理！大家總以為 3D 列印是魔法，卻忘了背後有無止盡的砂紙打磨。那布料部分呢？披風和外衣看起來都需要非常專業的裁縫技巧。那些也是妳縫的嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Yes, my mother actually taught me how to use a sewing machine when I was younger. For the tunic, I chose a heavy cotton blend so it draped nicely and didn't look cheap. I also added a hidden zipper at the back to make it easier to put on and take off by myself. Choosing the right fabric texture is just as important as prop making!
+                <div class="translation">（對啊，我媽媽在我小的時候教過我怎麼用裁縫機。外衣的部分，我選擇了厚重的混紡棉布，這樣它垂墜得比較好看，才不會顯得廉價。我還在背後加了隱形拉鍊，讓自己一個人穿脫時比較方便。選擇對的布料質感跟做道具是一樣重要的！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                I completely agree. The choice of heavy fabric really gives it a regal, premium feel in the photos. Seriously, your craftsmanship is top-tier. You should enter the Cosplay Championship next year!
+                <div class="translation">（我完全同意。厚重布料的選擇真的在照片中給人一種尊貴、高級的質感。說真的，妳的工藝水準是頂級的。妳明年應該去參加 Cosplay 大賽！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Haha, maybe someday! For now, I just love sharing my progress on social media and talking with people who appreciate the craft, like you. It makes all the hard work feel worth it.
+                <div class="translation">（哈哈，也許有一天吧！目前我只是很喜歡在社群媒體上分享我的製作進度，並跟像你這樣懂得欣賞工藝的人聊天。這讓所有的辛勞都變得非常有價值。）</div>
+            </div>
+        </div>
+
+        <h3>📝 Key Vocabulary</h3>
+        <table>
+            <tr>
+                <th>Word / Phrase</th>
+                <th>中文解釋</th>
+                <th>例句</th>
+            </tr>
+            <tr>
+                <td><strong>From scratch</strong></td>
+                <td>從零開始 / 白手起家</td>
+                <td>He built the entire cosplay prop from scratch.</td>
+            </tr>
+            <tr>
+                <td><strong>EVA foam</strong></td>
+                <td>EVA 泡棉（常規道具材料）</td>
+                <td>EVA foam is easy to cut and shape with heat.</td>
+            </tr>
+            <tr>
+                <td><strong>Dry brushing</strong></td>
+                <td>乾刷（一種上漆舊化技巧）</td>
+                <td>Dry brushing creates a realistic metal texture.</td>
+            </tr>
+            <tr>
+                <td><strong>Post-processing</strong></td>
+                <td>後製處理 / 後期加工</td>
+                <td>3D prints require hours of post-processing.</td>
+            </tr>
+            <tr>
+                <td><strong>Tailoring</strong></td>
+                <td>裁縫技巧 / 服裝剪裁</td>
+                <td>The tailoring on this anime uniform is perfect.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ================= 日文版頁面 ================= -->
+    <div id="section-ja" class="content-section">
+        <div class="audio-control">
+            <span>🔊 本文朗読 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('ja')">日本語ダイアログを再生</button>
+        </div>
+
+        <h3>🗣️ 対話：衣装や造形の制作、素材選びについてのディープな会話</h3>
+        <div class="dialogue-box" id="text-ja">
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                ソラさん、さっき撮った写真をさっそく見返していたんですけど、やっぱりこの鎧のディテールが凄すぎて感動しています。この衣装、もしかして全部ご自身でゼロから作られたんですか？
+                <div class="translation">（Sora，我剛才在看我們之前拍的照片，我還是對妳盔甲的細節還原度感到驚嘆。這套衣服真的完全是妳自己從零開始做出來的嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                はい、そうですよ！パーツの一つ一つまで全部手作りです。私は「自作レイヤー（じさくれいやー）」なので、ものづくりのプロセス自体がすごく好きなんです。大変な作業ですけど、完成した時の達成感を知ってしまうと、苦労も全部吹き飛びますね。
+                <div class="translation">（對啊，是我做的！每一塊都是。我是個自製派的 Cosplayer，所以我非常享受製作的過程。這真的很辛苦，但看到完成時的成就感，所有的辛勞就都吹散了呢。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                それは本当に素晴らしいですね。メインの胸当て（むねあて）や肩当てのパーツには、一体どんな素材を使っているんですか？本物の金属板みたいに見えますけど、一日中着ていられるように軽く作られているんですよね？
+                <div class="translation">（那真的令人印象非常深刻。妳的胸甲跟護肩是用什麼材質做的？它看起來像真的金屬片，但我猜它應該很輕，這樣妳才能穿一整天。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                大正解です！ベースの構造は高密度の「EVAボード（イーヴイエーボード）」で作っています。柔軟性があって、耐久性も高くて、なによりめちゃくちゃ軽いので、鎧コスプレには欠かせない神素材（かみそざい）なんです。ヒートガン（熱風機）で熱を当ててカーブの形を作ってから、Gボンド（強力粘着剤）で接着していきます。
+                <div class="translation">（大猜對了！基礎結構是用高密度的 EVA 泡棉（日文常稱 EVA Board）做的。這有彈性、耐用而且非常輕，對盔甲類 Cosplay 來說是不可或缺的神素材。我用熱風槍加熱來做出弧度形狀，然後用強力膠黏在一起。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                へえ、EVAボードなんですか！それなのに、どうやってこの本物そっくりの金属の質感を表現したんですか？塗装に綺麗なメタリックの光沢がありますし、細かい傷や使い込まれた凹み（戦損加工）まで本当にリアルです。
+                <div class="translation">（哇，EVA 泡棉？那妳是怎麼做出那種神似金屬的質感的？漆面有著亮麗的金屬光澤，甚至連細小的刮痕和用舊的凹痕（戰損加工）看起來都太真實了。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                ありがとうございます！これは下地処理（したじしょり）と重ね塗りを何度も繰り返した成果なんです。まず、造形ベースに「造形トップ」や「プレスティディップ」を何層か塗ってコーティングします。これをしないと、ボードが塗料を全部吸い込んじゃうんです。その上からグロスブラックの底地を塗って、シルバーの缶スプレーを吹きます。仕上げの傷は、ドライブラシという技法で鉄色のエナメル塗料をかすれさせて表現しました。
+                <div class="translation">（謝謝你！那是經過好幾層下地處理（打底）和重疊塗裝的成果。首先，在造形基底上塗幾層「造形Top」或「Plasti Dip」來做塗層。不這樣做的話，泡棉會把塗料吸光。之後再塗上光澤黑底，噴上銀色噴漆。最後的刮痕，是用一種叫「乾刷」的技法讓鐵色鋼鐵顏料產生枯竭感來表現的。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                ドライブラシ！ミニチュアのプラモデル塗装では聞いたことがありますが、等身大（とうしんだい）のサイズでやるのは気が遠くなる作業ですね。では、籠手（こて）にあるこの複雑な紋章はどうですか？手作業で彫ったにしては綺麗すぎます。
+                <div class="translation">（乾刷！我有在微縮模型鋼彈塑膠模型塗裝聽過，但在真人比例的尺寸上做這個，真的是一件令人氣絕的工作。那妳護腕（籠手）上這個複雜的紋章呢？如果是用手工刻的話也未免太漂亮了。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                お目が高い！その部分は実は「3Dプリンター」を使いました。アニメの資料を見ながら、3Dモデリングソフトで籠手のディテールを設計して、PLAのフィラメントで出力したんです。でも、3Dプリントは出力した後の「後処理（パテ埋めとヤスリがけ）」が本当に地獄で…。積層痕（せきそうこん）を消すために何日もヤスリをかけて、サフェーサーを吹いてを繰り返しました。
+                <div class="translation">（好眼力！那些部分其實是利用了「3D列印機」。我看著動漫資料，用 3D 模型軟體設計了護腕細節，再用 PLA 耗材列印出來。不過，3D 列印出來後的「後製（補土與砂紙打磨）」真的是地獄...。為了消除列印層線，必須花好幾天重複進行砂紙打磨、噴水補土。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                なるほど、後処理ですか！みんな3Dプリンターを魔法の道具だと思いがちですけど、その裏にある終わりのないヤスリがけの苦労を忘れがちですよね。布の部分はどうですか？マントや上着の仕立てはプロの裁縫技術が必要に見えます。これも縫ったんですか？
+                <div class="translation">（原來如此，後處理嗎！大家很容易把 3D 列印機當成魔法道具，卻很容易忘記背後那無止盡砂紙打磨的辛勞呢。布料的部分呢？披風和上著的版型看起來需要專業裁縫技術，這也是妳縫製的嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                はい！小さい頃に母からミシンの使い方を教わったんです。この上着は、安っぽく見えないように、程よい重みとドレープ感が出る厚手の混紡綿（こんぼうめん）を選びました。一人でも着脱（ちゃくだつ）が簡単にできるように、背中にコンシールファスナー（隠しファスナー）を仕込んであります。造形だけじゃなくて、生地（きじ）の質感選びもコスプレでは同じくらい重要なんです。
+                <div class="translation">（是的！我小時候從母親那裡學到了縫牾機（裁縫機）的用法。這件上衣為了看起來不廉價，選擇了會有適度重量感與垂墜感的厚實混紡棉。為了讓自己一個人也能簡單穿脫，在背後嵌入了隱形拉鍊。不只是造形，布料的質感選擇在 Cosplay 裡也是一樣重要的。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                本当にその通りですね。厚手の生地を選んだおかげで、写真の中でもすごく高級感と気品が出ています。本当にソラさんの技術力（クラフツマンシップ）はトップレベルですよ。来年のコスプレ世界大会に出場すべきです！
+                <div class="translation">（真的就像妳說的那樣呢。多虧選了厚重布料，在照片中顯得非常有高級感與氣度。Sora 妳的工藝技術真的是頂尖水準喔。應該去參加明年的 Cosplay 世界大賽！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                ふふ、いつか挑戦できたらいいですね！今は、SNSで制作過程をシェアしたり、レオさんみたいに造形の苦労やこだわりを分かってくれる方とお話しできるのが一番楽しいです。それだけで頑張った甲斐があったなって思えます。
+                <div class="translation">（呵呵，希望哪天可以挑戰看看呢！目前，在 SNS 分享製作過程，或者像 Leo 先生這樣懂得造形的辛勞與講究的人聊天是最快樂的。光是這樣就覺得努力有了回報呢。）</div>
+            </div>
+        </div>
+
+        <h3>📝 重要な単語帳</h3>
+        <table>
+            <tr>
+                <th>単語 / 表現</th>
+                <th>読み方</th>
+                <th>中文解釋</th>
+                <th>例文</th>
+            </tr>
+            <tr>
+                <td><strong>自作レイヤー</strong></td>
+                <td>じさくれいやー</td>
+                <td>自己動手製作服裝道具的 Cosplayer</td>
+                <td>私は衣装を全て手作りする自作レイヤーです。</td>
+            </tr>
+            <tr>
+                <td><strong>下地処理</strong></td>
+                <td>したじしょり</td>
+                <td>打底處理 / 表面拋光塗層預處理</td>
+                <td>塗装を綺麗にするために下地処理を徹底する。</td>
+            </tr>
+            <tr>
+                <td><strong>ヤスリがけ</strong></td>
+                <td>やすりがけ</td>
+                <td>用砂紙打磨 / 拋光</td>
+                <td>3Dプリントの積層痕を消すためにヤスリがけする。</td>
+            </tr>
+            <tr>
+                <td><strong>着脱</strong></td>
+                <td>ちゃくだつ</td>
+                <td>（衣服或道具的）穿脫</td>
+                <td>この鎧は一人での着脱が難しい。</td>
+            </tr>
+            <tr>
+                <td><strong>〜た甲斐があった</strong></td>
+                <td>〜たかいがあった</td>
+                <td>努力沒有白費 / 值得了</td>
+                <td>何日も徹夜して衣装を作った甲斐があった。</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    function switchLanguage(lang) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+        
+        if(lang === 'en') {
+            document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+            document.getElementById('section-en').classList.add('active');
+        } else {
+            document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+            document.getElementById('section-ja').classList.add('active');
+        }
+    }
+
+    function speakText(lang) {
+        window.speechSynthesis.cancel();
+
+        let textContainerId = lang === 'en' ? 'text-en' : 'text-ja';
+        let container = document.getElementById(textContainerId);
+        let lines = container.querySelectorAll('.dialogue-line');
+        
+        lines.forEach(line => {
+            let clone = line.cloneNode(true);
+            let trans = clone.querySelector('.translation');
+            let spk = clone.querySelector('.speaker');
+            if(trans) trans.remove();
+            if(spk) spk.remove();
+            
+            let pureText = clone.innerText.trim();
+            let utterance = new SpeechSynthesisUtterance(pureText);
+            
+            if (lang === 'en') {
+                utterance.lang = 'en-US';
+                utterance.rate = 0.88; 
+            } else {
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.92;
+            }
+            window.speechSynthesis.speak(utterance);
+        });
+    }
+</script>
+
+</body>
+</html>

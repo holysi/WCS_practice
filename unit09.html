@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 09: Photo Retouching and Delivery! / 写真の現像と返図！</title>
+    <style>
+        :root {
+            --primary-color: #00cec9;
+            --secondary-color: #2d3436;
+            --text-color: #2c3e50;
+            --bg-color: #e8f8f5;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", "Helvetica", "Arial", "LiHei Pro", "Medium", "Microsoft JhengHei";
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 { color: var(--secondary-color); margin-bottom: 5px; }
+        h2 { color: var(--primary-color); font-size: 1.2rem; margin-top: 0; }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 2px solid var(--primary-color);
+            background-color: transparent;
+            color: var(--primary-color);
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .audio-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #d1f2eb;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .play-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .play-btn:hover { opacity: 0.9; }
+
+        .dialogue-box {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fafafa;
+            margin-bottom: 25px;
+        }
+
+        .dialogue-line {
+            margin-bottom: 18px;
+            border-left: 4px solid #ddd;
+            padding-left: 15px;
+        }
+
+        .dialogue-line.highlight {
+            border-left-color: var(--primary-color);
+        }
+
+        .speaker {
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .translation {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th { background-color: #d1f2eb; color: var(--text-color); }
+
+        @media (max-width: 600px) {
+            th, td { padding: 8px; font-size: 0.9rem; }
+            .tab-btn { padding: 8px 15px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Unit 09: Photo Retouching and Delivery!</h1>
+        <h2>活動結束後，攝影師與 Coser 討論修圖風格、現像調色與網路返圖（3-5分鐘精實特輯）</h2>
+    </header>
+
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchLanguage('en')">English Version</button>
+        <button class="tab-btn" onclick="switchLanguage('ja')">日本語セクション</button>
+    </div>
+
+    <!-- ================= 英文版頁面 ================= -->
+    <div id="section-en" class="content-section active">
+        <div class="audio-control">
+            <span>🔊 課文朗讀 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('en')">播放完整英文對話</button>
+        </div>
+
+        <h3>🗣️ Full Dialogue: Discussing Color Grading and Retouching Styles via DMs</h3>
+        <div class="dialogue-box" id="text-en">
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Hi Sora! I have just finished sorting through all the RAW files from our WCS photoshoot, and I have uploaded the unedited preview gallery to the Google Drive link I just sent you. Feel free to browse through them and pick your absolute favorites for advanced editing!
+                <div class="translation">（嗨 Sora！我剛剛已經把我們 WCS 外拍的所有 RAW 檔整理完畢，並且把未修圖的預覽相簿上傳到剛傳給妳的 Google 雲端網址了。請隨意瀏覽，並挑選出妳最中意的幾張照片來進行進階精修！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Wow, Leo! That was incredibly fast! Thank you so much for the quick turnaround. Let me open the link right now... Oh, my goodness! Even without any editing, the composition and the lighting look absolutely beautiful. You captured the dynamic angles perfectly!
+                <div class="translation">（哇，Leo！這也太快了吧！非常謝謝你這麼迅速交件。讓我現在打開網址... 噢，我的天啊！即使沒有經過任何修改，構圖跟光線看起來就已經非常漂亮了。你把動態角度捕捉得太完美了！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                I'm so glad you like them! Since we discussed doing a specialized cinematic look for your next dark fantasy project, I wanted to ask what kind of color grading style you prefer for this current sports anime set. Should I go for a bright, high-saturation look, or something a bit more nostalgic?
+                <div class="translation">（很高興妳會喜歡！既然我們之前討論過要在妳下一個黑暗奇幻企劃中做特別的電影感視覺，我想問問看妳對目前這套運動動漫照片偏好哪種調色現像風格？我應該走明亮、高飽和度的路線，還是稍微帶點懷舊感呢？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                I was actually thinking about a cinematic vintage film aesthetic! I really love high-contrast lighting coupled with authentic film grain. It gives the photos a dramatic, timeless anime vibe, like a still frame directly from a theatrical movie. What do you think?
+                <div class="translation">（我其實正在想一種電影感的復古底片美學！我真的很喜歡高對比度的光影，再加上真實的膠卷顆粒感。這能帶給照片一種具戲劇張力、經典耐看的動漫氛圍，就像直接從劇場版電影中截取下來的靜止畫面一樣。你覺得呢？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                I think that film style would look spectacular! It will blend perfectly with the textured brick walls background we chose under the Oasis 21 shadow. I can emulate authentic 35mm film grain during the RAW development in Lightroom. I'll also slightly crush the blacks and boost the highlights to give it that high-contrast, cinematic punch.
+                <div class="translation">（我覺得那種底片風格看起來會非常驚艷！它能與我們在綠洲 21 陰影下選擇的紋理磚牆背景完美融合。我可以在 Lightroom 進行 RAW 檔現像時模擬出真實的 35mm 膠卷顆粒感。我也會稍微壓暗黑色調並提升高光，讓它更具高對比的電影感張力。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                That sounds exactly like what I envisioned! Regarding the skin retouching and reshaping, please feel free to keep it natural. You don't need to do heavy liquefying on my face or body proportions. Just fixing a few blemishes, softening the skin textures under the harsh summer light, and smoothing out the wig flyaways would be perfect.
+                <div class="translation">（這聽起來完全就是我所想像的畫面！關於皮膚精修跟身形調整的部分，請隨意保持自然就好。妳不需要對我的臉部或身體比例做過度的液化。只要幫我修正一些小瑕疵、柔化夏天強烈光線下的皮膚紋理，並撫平假髮的毛躁雜髮就完美了。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Understood. Keeping it natural is my default preference as well. Your expressions are already very impactful, so heavy editing would actually ruin the authenticity of the character. How many photos would you like me to edit for the final selection?
+                <div class="translation">（理解。保持自然也是我內定的偏好。妳的表情本身就已經很有張力了，過度的修圖反而會破壞角色的真實還原度。最終選片妳希望我精修幾張照片呢？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                I have just marked my top four favorites in the folder! Two full-body action shots and two tight close-ups that show the eye makeup and contact lenses. Take your time with the editing, there is absolutely no rush.
+                <div class="translation">（我剛剛已經在資料夾裡標記好我最喜歡的前四張照片了！兩張全身的動作特寫，以及兩張展現眼妝與變色片的緊湊特寫。修圖慢慢來就好，完全不用急。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Excellent, I see your selections. I will get to work on them over the next few days. Once the final retouched versions are ready, I will upload them into a separate folder named "Final_Edits" in the same link. I'll shoot you a DM as soon as they are published!
+                <div class="translation">（太好了，我看到妳挑的照片了。接下來幾天我會開始動工。一旦最終精修版本完成，我會把它們上傳到同一個連結內名為「Final_Edits」的獨立資料夾中。一發布我就會傳私訊通知妳！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Perfect! When I post them on X and Instagram, I will make sure to write a proper caption and tag your photography account to give you full photo credit. I can't wait to share your amazing work with the community!
+                <div class="translation">（太棒了！當我在 X 和 Instagram 發布它們時，我一定會寫好文案並 Tag 你的攝影帳號，附上完整的攝影來源註明。我等不及要跟圈內分享你超讚的作品了！）</div>
+            </div>
+        </div>
+
+        <h3>📝 Key Vocabulary</h3>
+        <table>
+            <tr>
+                <th>Word / Phrase</th>
+                <th>中文解釋</th>
+                <th>例句</th>
+            </tr>
+            <tr>
+                <td><strong>Turnaround</strong></td>
+                <td>工作週期 / 交件時間</td>
+                <td>Thank you for the quick turnaround on the photos.</td>
+            </tr>
+            <tr>
+                <td><strong>Color grading</strong></td>
+                <td>調色 / 色調調整</td>
+                <td>The color grading gives the image a retro cinematic mood.</td>
+            </tr>
+            <tr>
+                <td><strong>Film grain</strong></td>
+                <td>底片顆粒感 / 膠卷底噪</td>
+                <td>Adding film grain makes digital photos look like analog film.</td>
+            </tr>
+            <tr>
+                <td><strong>Liquefy</strong></td>
+                <td>液化（修圖中調整形狀的工具）</td>
+                <td>Please use the liquefy tool carefully to keep it natural.</td>
+            </tr>
+            <tr>
+                <td><strong>Blemishes</strong></td>
+                <td>皮膚瑕疵 / 斑點 / 暗沉</td>
+                <td>The photographer removed minor blemishes during editing.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ================= 日文版頁面 ================= -->
+    <div id="section-ja" class="content-section">
+        <div class="audio-control">
+            <span>🔊 本文朗読 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('ja')">日本語ダイアログを再生</button>
+        </div>
+
+        <h3>🗣️ 對話：DMでのやり取り・写真の現像（レタッチ）の方向性と返図の相談</h3>
+        <div class="dialogue-box" id="text-ja">
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                ソラさん、こんにちは！コスサミで撮影したRAWデータの選別が終わりまして、未修正のプレビュー用ギャラリー（速報データ）を先ほどお送りしたGoogleドライブのリンクにアップしました。お時間のある時にチェックして、本修整（レタッチ）に回したいお気に入りの写真をセレクトしてください！
+                <div class="translation">（嗨 Sora！我剛剛已經把我們 WCS 外拍的所有 RAW 檔整理完畢，並且把未修圖的預覽相簿（速報數據）上傳到剛傳給妳的 Google 雲端網址了。請隨意瀏覽，並挑選出妳最中意的幾張照片來進行進階精修（本修整）！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                わあ、レオさん！仕事が早すぎます！迅速なデータ納品（のうひん）を本当にありがとうございます。さっそくリンクを開いてみますね…うわぁ、すごい！まだ全くレタッチしていない状態なのに、構図もライティングもめちゃくちゃ綺麗です。躍動感のあるアングルが完璧に捉えられています！
+                <div class="translation">（哇，Leo！這工作效率也太快了吧！非常謝謝你這麼迅速交件（數據納品）。讓我現在打開網址... 噢，好厲害！即使還完全沒有進行修圖的狀態，構圖跟光線就已經超級漂亮了。有躍動感 Angles 被完美地捕捉到了！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                喜んでもらえて良かったです！次のダークファンタジーの合わせでは映画風のルックにしようと話していましたが、今回のスポーツアニメのセットは、どんな現像（色調補正）のスタイルが好みですか？明るくて高彩度（こうさいど）なアニメ風にするか、それとも少しノスタルジックな雰囲気に仕上げるか、どちらがいいでしょう？
+                <div class="translation">（很高興妳會喜歡！既然我們之前討論過要在妳下一個黑暗奇幻企劃中做電影感（映畫風）的視覺，我想問問看妳對目前這套運動動漫照片偏好哪種現像現像風格？我應該走明亮、高彩度的路線，還是稍微帶點懷舊感呢？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                実は、映画のワンシーンのような「レトロなフィルム風美学」にしたいなと思っていました！強いコントラストの明暗差に、リアルな「粒状感（フィルムのざらざら感）」を組み合わせるのがすごく好きなんです。そうすると、劇場版映画のスクショみたいな、ドラマチックで色褪せないアニメの世界観が出せると思うのですが、どうですか？
+                <div class="translation">（我其實正在想一種電影感的復古底片風美學！我真的很喜歡高對比度的明暗差，再加上真實的「粒狀感（底片的毛躁感）」。這能帶給照片一種劇場版電影截圖（スクショ）一樣、具戲劇張力且不退流行的動漫世界觀，你覺得呢？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                そのフィルム風のスタイル、絶対に最高になりますね！オアシス21の建物の影で選んだ、あの質感のあるレンガ壁の背景にも完璧にマッチします。LightroomでのRAW現像のときに、リアルな35mmフィルムの粒状感を再現（シミュレーション）してみます。黒レベルを少し下げて、ハイライトを強調することで、高コントラストで映画のようなインパクトを出しますね。
+                <div class="translation">（那種底片風格絕對會變得超棒！它能與我們在綠洲 21 建築物陰影下選擇的、有質感的磚牆背景完美符合。我可以在 Lightroom 進行 RAW 現像時模擬出真實的 35mm 底片粒狀感。我也會稍微壓低黑階（黑Level）並強調高光，讓它更具高對比且電影般的衝擊感。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                まさに私の理想通りのイメージです！肌の修正や輪郭調整（整形）に関しては、できるだけナチュラルに補正してもらえると助かります。顔や体型のバランスを大きく変える「液化（リキファイ）」はしなくて大丈夫です。夏の強い光による肌のテカリや色ムラを消して、ウィッグのハネ毛（アホ毛）を綺麗にレタッチしてもらえるだけで完璧です。
+                <div class="translation">（這聽起來完全就是我所想像的畫面！關於皮膚精修跟輪廓調整（整形）的部分，請盡量保持自然（Natural）修正就幫大忙了。不需要對我的臉部或體型比例做大動作變化的「液化（Liquify）」。只要幫我消除夏天強烈光線下的皮膚反光（テカリ）與膚色不均，並把假髮的毛躁雜髮修得漂亮就完美了。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                了解しました。自然な仕上がりにするのは僕も大賛成です。ソラさんの表現力はすでに素晴らしいので、過剰な加工（過度なレタッチ）をしてしまうと、かえってキャラクターのリアルな還元度（再現度）を損なってしまいますからね。最終的に何枚ほど現像しましょうか？
+                <div class="translation">（了解。做出自然的仕上がり（成品效果）我也非常贊成。Sora 妳的表現力本身就已經很棒了，過度的修圖加工反而會破壞角色真實的還原度（再現度）呢。最終妳希望我現像幾張照片呢？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                フォルダーの中で、特に気に入った4枚にスターマーク（お気に入り）をつけました！全身のアクションポーズが2枚と、アイメイクやカラコンがしっかり映っている顔のアップが2枚です。現像作業は急ぎませんので、レオさんのペースでゆっくり進めてくださいね。
+                <div class="translation">（我剛剛已經在資料夾裡標記好（打星號）我最喜歡的前四張照片了！全身的動作特寫2張，以及眼妝與變色片清晰映照出的臉部特寫2張。現像作業不用急，請配合 Leo 先生的步調慢慢進行就可以喔。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                はい、確認しました。ここから数日かけて丁寧に現像していきますね。完成した本修整のデータは、同じリンク内の「Final_Edits」という新しいフォルダに格納（かくのう）します。アップロードが終わったら、すぐにDMで速報を入れますね！
+                <div class="translation">（好的，我確認了。接下來幾天我會花時間仔細現像。完成的修圖數據會放入同一個連結內名為「Final_Edits」的新資料夾中。上傳結束後我會立刻用 DM 給妳發速報訊息！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                ありがとうございます！Xやインスタに投稿するときは、しっかりとキャプションに「お写真：@Leo_Photo_WCS」とクレジット表記（タグ付け）をさせていただきますね。レオさんの素晴らしい作品をフォロワーのみんなにシェアするのが今からとっても楽しみです！
+                <div class="translation">（謝謝你！當我在 X 和 Instagram 投稿發布它們時，我一定會在文案中好好寫上「お写真：@Leo_Photo_WCS」標註來源與 Tag 喔。現在就非常期待把 Leo 先生這麼優秀的作品分享給追蹤我的粉絲大家看！）</div>
+            </div>
+        </div>
+
+        <h3>📝 重要な単語帳</h3>
+        <table>
+            <tr>
+                <th>単語 / 表現</th>
+                <th>読み方</th>
+                <th>中文解釋</th>
+                <th>例文</th>
+            </tr>
+            <tr>
+                <td><strong>納品</strong></td>
+                <td>のうひん</td>
+                <td>交件 / 交付數據成果</td>
+                <td>撮影データを一週間以内に納品する。</td>
+            </tr>
+            <tr>
+                <td><strong>粒状感</strong></td>
+                <td>りゅうじょうかん</td>
+                <td>（底片特有的）顆粒感 / 粗糙濾鏡</td>
+                <td>あえて写真に粒状感を加えてレトロにする。</td>
+            </tr>
+            <tr>
+                <td><strong>テカリ</strong></td>
+                <td>てかり</td>
+                <td>（夏日出汗或強光引起的）面部反光/油光</td>
+                <td>レタッチで顔のテカリを自然に消す。</td>
+            </tr>
+            <tr>
+                <td><strong>仕上がり</strong></td>
+                <td>しあがり</td>
+                <td>成片效果 / 最終完成度</td>
+                <td>ナチュラルな仕上がりの写真が大好きです。</td>
+            </tr>
+            <tr>
+                <td><strong>格納</strong></td>
+                <td>かくのう</td>
+                <td>放入 / 歸檔 / 儲存於檔案夾</td>
+                <td>完成したデータをGoogleドライブに格納しました。</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script {nonce}>
+    function switchLanguage(lang) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+        
+        if(lang === 'en') {
+            document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+            document.getElementById('section-en').classList.add('active');
+        } else {
+            document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+            document.getElementById('section-ja').classList.add('active');
+        }
+    }
+
+    function speakText(lang) {
+        window.speechSynthesis.cancel();
+
+        let textContainerId = lang === 'en' ? 'text-en' : 'text-ja';
+        let container = document.getElementById(textContainerId);
+        let lines = container.querySelectorAll('.dialogue-line');
+        
+        lines.forEach(line => {
+            let clone = line.cloneNode(true);
+            let trans = clone.querySelector('.translation');
+            let spk = clone.querySelector('.speaker');
+            if(trans) trans.remove();
+            if(spk) spk.remove();
+            
+            let pureText = clone.innerText.trim();
+            let utterance = new SpeechSynthesisUtterance(pureText);
+            
+            if (lang === 'en') {
+                utterance.lang = 'en-US';
+                utterance.rate = 0.88; 
+            } else {
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.92;
+            }
+            window.speechSynthesis.speak(utterance);
+        });
+    }
+</script>
+
+</body>
+</html>

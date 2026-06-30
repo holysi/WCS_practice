@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 07: Emergency! My Prop is Broken / 緊急事態！道具が壊れた</title>
+    <style>
+        :root {
+            --primary-color: #ff4757;
+            --secondary-color: #2f3542;
+            --text-color: #2c3e50;
+            --bg-color: #fff0f2;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", "Helvetica", "Arial", "LiHei Pro", "Medium", "Microsoft JhengHei";
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 { color: var(--secondary-color); margin-bottom: 5px; }
+        h2 { color: var(--primary-color); font-size: 1.2rem; margin-top: 0; }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 2px solid var(--secondary-color);
+            background-color: transparent;
+            color: var(--secondary-color);
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .audio-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffe0e6;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .play-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .play-btn:hover { opacity: 0.9; }
+
+        .dialogue-box {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fafafa;
+            margin-bottom: 25px;
+        }
+
+        .dialogue-line {
+            margin-bottom: 18px;
+            border-left: 4px solid #ddd;
+            padding-left: 15px;
+        }
+
+        .dialogue-line.highlight {
+            border-left-color: var(--primary-color);
+        }
+
+        .speaker {
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .translation {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th { background-color: #ffe0e6; color: var(--text-color); }
+
+        @media (max-width: 600px) {
+            th, td { padding: 8px; font-size: 0.9rem; }
+            .tab-btn { padding: 8px 15px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Unit 07: Emergency! My Prop is Broken</h1>
+        <h2>現場服裝或道具損壞時，向他人借用緊急維修工具的求助對話（3-5分鐘精實特輯）</h2>
+    </header>
+
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchLanguage('en')">English Version</button>
+        <button class="tab-btn" onclick="switchLanguage('ja')">日本語セクション</button>
+    </div>
+
+    <!-- ================= 英文版頁面 ================= -->
+    <div id="section-en" class="content-section active">
+        <div class="audio-control">
+            <span>🔊 課文朗讀 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('en')">播放完整英文對話</button>
+        </div>
+
+        <h3>🗣️ Full Dialogue: Dealing with a Cosplay Malfunction</h3>
+        <div class="dialogue-box" id="text-en">
+            <div class="dialogue-line highlight">
+                <span class="speaker">Sora:</span>
+                Oh no! Oh my goodness, Leo, we have a major crisis! The strap on my right shoulder armor just snapped completely off! I think someone accidentally bumped into me in the crowded merchandise hall.
+                <div class="translation">（糟糕！天啊，Leo，我們遇到大危機了！我右肩盔甲上的帶子整個斷掉了！我想剛剛在擁擠的商品館裡有人不小心撞到我了。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Leo:</span>
+                Oh shoot, that's terrible! Let me take a look at it. It seems the hot glue joint connecting the strap to the EVA foam broke apart. Don't panic! Do you have a cosplay emergency repair kit in your bag?
+                <div class="translation">（啊，糟糕，這太慘了！讓我看一下。看起來是連接帶子和 EVA 泡棉的熱熔膠接合處斷開了。別慌！妳包包裡有帶 Cosplay 緊急維修包嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Sora:</span>
+                I usually bring one, but I forgot to pack it this morning because I was rushing to get to the venue on time. I am so mad at myself! The parade is going to start in an hour, and I can't walk around with my shoulder armor dangling like this. 
+                <div class="translation">（我平時都會帶，但今天早上因為趕著準時到會場就忘了放進包包。我真的氣死我自己了！遊行一小時後就要開始了，我不能讓肩甲像這樣晃來晃去地到處走。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Leo:</span>
+                It's okay, mistakes happen. Let's look around the dressing area. Maybe we can ask another cosplayer or photographer for help. Look, there's a group of cosplayers sitting over there with a lot of luggage. Let's go ask them. Excuse me, hi! I am so sorry to bother you. 
+                <div class="translation">（沒關係，人都會犯錯。我們在更衣區附近找找看。也許我們可以向其他 Cosplayer 或攝影師尋求幫助。看，那邊有一群帶了很多行李的 Cosplayer 坐在那。我們去問問看。不好意思，嗨！真的很抱歉打擾你們。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Cosplayer B:</span>
+                Hi there! No problem at all. Is everything okay? You two look a bit worried.
+                <div class="translation">（你們好！完全沒關係。還順利嗎？你們兩個看起來有點焦慮。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Leo:</span>
+                We are having a bit of a cosplay malfunction. The shoulder strap on her armor just broke. By any chance, do you happen to have any safety pins, super glue, or perhaps a portable hot glue gun that we could borrow for a few minutes?
+                <div class="translation">（我們的服裝道具出了點故障。她盔甲上的肩帶剛好斷了。不曉得你們手邊碰巧有沒有安全別針、瞬間膠，或者行動熱熔膠槍，可以借我們用個幾分鐘嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Cosplayer B:</span>
+                Oh, I've been there! Prop damage is the worst. Let me check my emergency kit... I don't have a portable glue gun, but I do have some heavy-duty double-sided tape, a bottle of instant super glue, and plenty of safety pins. Will any of these work?
+                <div class="translation">（噢，我完全懂這種心情！道具損壞最讓人崩潰了。讓我查一下我的救急包... 我沒有行動熱熔膠槍，但我有一些高強度的雙面膠、一瓶瞬間膠和很多安全別針。這些有哪樣能派上用場嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                The instant super glue would be an absolute lifesaver for the foam! Also, could I borrow two safety pins just in case the glue doesn't hold under the heat? I want to pin the strap from the inside as a backup.
+                <div class="translation">（這瞬間膠對泡棉來說簡直是救星！另外，我可以借兩個安全別針嗎？萬一膠水在熱天裡黏不住，我想從內側用別針固定當作備用方案。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Cosplayer B:</span>
+                Of course! Here is the super glue and a few safety pins. Take your time fixing it, there's no need to rush. We also have some wig tape and wet wipes if you need to clean your hands afterward.
+                <div class="translation">（當然沒問題！這是瞬間膠跟幾個安全別針。慢慢修，不用急。如果你們等一下需要擦手，我們這也有假髮專用膠帶跟濕紙巾。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Thank you so much! You are incredibly kind. *[Leo helps apply the glue and pins]* Leo, can you press the strap down firmly and hold it for about thirty seconds? The super glue needs a bit of pressure to bond properly with the foam.
+                <div class="translation">（非常謝謝你！你人真的太好了。*［Leo 幫忙塗膠並別上別針］* Leo，你能用力把帶子壓住並保持大約30秒嗎？瞬間膠需要一點壓力才能跟泡棉完美接合。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Got it, holding it down now. One, two, three... okay, it feels very solid now! Let's secure it with the safety pins from the inside just like you planned. Wow, look at that! It's perfectly back in place and you can barely see the repair from the outside.
+                <div class="translation">（收到，正在壓著。一、二、三... 好的，現在感覺非常牢固了！我們按照妳的計畫，從內側用安全別針把它固定住吧。哇，妳看！它完美地歸位了，而且從外面幾乎看不出修補的痕跡。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                *[Testing the movement]* Wow, it works perfectly! It feels even sturdier than before. *[Returning the tools]* Thank you so much again for saving my day! Can I offer you some snacks as a token of our appreciation? I have some Taiwanese pineapple cakes here.
+                <div class="translation">（*［測試活動度］* 哇，效果完美！感覺比之前還要更結實了。*［歸還工具］* 再次非常謝謝你拯救了我的一天！我可以送你們一些零食來表達我們的一點謝意嗎？我這裡有一些台灣的鳳梨酥。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Cosplayer B:</span>
+                Oh, pineapple cakes? I love them! Thank you so much! I'm just glad I could help. In the cosplay community, we always have to watch each other's backs. Have an amazing time at the parade!
+                <div class="translation">（噢，鳳梨酥嗎？我超愛的！非常謝謝你們！我也很高興能幫上忙。在 Cos 圈裡，我們本來就應該隨時互相照應。祝你們在遊行玩得非常開心！）</div>
+            </div>
+        </div>
+
+        <h3>📝 Key Vocabulary</h3>
+        <table>
+            <tr>
+                <th>Word / Phrase</th>
+                <th>中文解釋</th>
+                <th>例句</th>
+            </tr>
+            <tr>
+                <td><strong>Cosplay malfunction</strong></td>
+                <td>服裝/道具故障或走光狀況</td>
+                <td>She handled the cosplay malfunction very professionally.</td>
+            </tr>
+            <tr>
+                <td><strong>Safety pin</strong></td>
+                <td>安全別針</td>
+                <td>I always keep a few safety pins in my bag just in case.</td>
+            </tr>
+            <tr>
+                <td><strong>Super glue / Instant glue</strong></td>
+                <td>瞬間膠 / 快乾膠</td>
+                <td>Super glue is perfect for quick prop repairs at a con.</td>
+            </tr>
+            <tr>
+                <td><strong>Heavy-duty</strong></td>
+                <td>高強度 / 耐重的 / 耐用的</td>
+                <td>We used heavy-duty tape to fix the shield prop.</td>
+            </tr>
+            <tr>
+                <td><strong>Watch each other's backs</strong></td>
+                <td>互相照應 / 互為後盾</td>
+                <td>Cosplayers always watch each other's backs during emergencies.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ================= 日文版頁面 ================= -->
+    <div id="section-ja" class="content-section">
+        <div class="audio-control">
+            <span>🔊 本文朗読 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('ja')">日本語ダイアログを再生</button>
+        </div>
+
+        <h3>🗣️ 對話：トラブル発生！衣装崩れと道具の緊急修理・道具の借り合い</h3>
+        <div class="dialogue-box" id="text-ja">
+            <div class="dialogue-line highlight">
+                <span class="speaker">ソラ：</span>
+                どうしよう！大変、レオさん、大ピンチです！右肩の鎧のストラップが完全にちぎれちゃいました！さっきの混雑していた物販エリアで、誰かに引っかかっちゃったんだと思います。
+                <div class="translation">（糟糕！天啊，Leo，我們遇到大危機了！我右肩盔甲上的帶子整個斷掉了！我想剛剛在擁擠的商品館裡有人不小心撞到我了。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">レオ：</span>
+                うわあ、それは災難（さいなん）ですね！ちょっと見せてください。ストラップとEVAボードを繋いでいたグルーガン（熱熱融膠）の接着面が剥がれちゃったみたいです。焦らなくて大丈夫ですよ！バッグの中に「お助けセット（緊急修復ポーチ）」は入っていますか？
+                <div class="translation">（啊，糟糕，這太慘了！讓我看一下。看起來是連接帶子和 EVA 泡棉的熱熔膠接合處斷開了。別慌！妳包包裡有帶 Cosplay 緊急維修包嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">ソラ：</span>
+                いつもは持ち歩いているんですけど、今朝は会場に遅れないように急いで準備したから、家に忘れてきちゃいました…。自分のバカ！あと1時間でパレードが始まっちゃうのに、肩の鎧がこんなにブラブラした状態じゃ歩けないよ。
+                <div class="translation">（我平時都會帶，但今天早上因為趕著準時到會場就忘了放進包包。我真的氣死我自己了！遊行一小時後就要開始了，我不能讓肩甲像這樣晃來晃去地到處走。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">レオ：</span>
+                大丈夫、誰にでも忘れ物はあります。更衣室の周辺を探してみましょう。他のレイヤーさんやカメラマンさんに助けを求められるかもしれません。あ、見てください、あそこに荷物をたくさん持ったレイヤーさんのグループが座っていますよ。ちょっと聞いてみましょう。すみません、こんにちは！休憩中（きゅうけいちゅう）に大変申し訳ありません。
+                <div class="translation">（沒關係，人都會犯錯。我們在更衣區附近找找看。也許我們可以向其他 Cosplayer 或攝影師尋求幫助。看，那邊有一群帶了很多行李的 Cosplayer 坐在那。我們去問問看。不好意思，妳好！真的很抱歉打擾你們。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レイヤーB：</span>
+                こんにちは！全然大丈夫ですよ、どうしました？お二人ともかなり困った顔をしていますね。
+                <div class="translation">（你們好！完全沒關係。還順利嗎？你們兩個看起來有點焦慮。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">レオ：</span>
+                実は衣装が壊れて（衣装崩れして）しまいまして。彼女の鎧の肩ストラップが切れてしまったんです。もしよろしければ、数分間だけお借りできる「安全ピン」か「瞬間接着剤（しゅんかんせっちゃくざい）」、あるいは持ち運び用の「グルーガン」などをお持ちではないでしょうか？
+                <div class="translation">（我們的服裝道具出了點故障。她盔甲上的肩帶剛好斷了。不曉得你們手邊碰巧有沒有安全別針、瞬間膠，或者行動熱熔膠槍，可以借我們用個幾分鐘嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レイヤーB：</span>
+                あー、その気持ち、本当によく分かります！イベント中の造形破損（ぞうけいはそん）って本当に焦りますよね。ええと、私の緊急セットを見てみますね…あいにくポータブルのグルーガンは無いんですけど、強力な両面テープと、使いかけの瞬間接着剤、あとは安全ピンならたくさんありますよ！どれか使えそうなものはありますか？
+                <div class="translation">（噢，我完全懂這種心情！道具損壞最讓人崩潰了。讓我查一下我的救急包... 我沒有行動熱熔膠槍，但我有一些高強度的雙面膠、一瓶瞬間膠和很多安全別針。這些有哪樣能派上用場嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                瞬間接着剤があれば、EVAボードがくっつくので本当に助かります！あと、念のために安全ピンも二つお借りしてもいいですか？暑さで接着剤が剥がれてしまった時のバックアップとして、内側からピンで留めておきたいんです。
+                <div class="translation">（這瞬間膠對泡棉來說簡直是救星！另外，我可以借兩個安全別針嗎？萬一膠水在熱天裡黏不住，我想從內側用別針固定當作備用方案。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レイヤーB：</span>
+                もちろんです！はい、瞬間接着剤と安全ピンをどうぞ。時間はまだありますから、焦らずゆっくり直してくださいね。もし後で手を拭きたくなったら、ウィッグ用の両面テープやウェットティッシュもあるので使ってください。
+                <div class="translation">（當然沒問題！這是瞬間膠跟幾個安全別針。慢慢修，不用急。如果你們等一下需要擦手，我們這也有假髮專用膠帶跟濕紙巾。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                本当にありがとうございます！神様みたいに優しいです。［レオが接着とピン留めを手伝う］レオさん、そのストラップを上からしっかり押さえて、30秒ほどキープしてもらえますか？瞬間接着剤は、ボードと密着させるために少し圧力をかける必要があるんです。
+                <div class="translation">（非常謝謝你！你人真的太好了。*［Leo 幫忙塗膠並別上別針］* Leo，你能用力把帶子壓住並保持大約30秒嗎？瞬間膠需要一點壓力才能跟泡棉完美接合。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                了解です、今しっかり押さえています。一、二、三…よし、かなりガッチリ固定されましたよ！じゃあ予定通り、内側から安全ピンで補強（ほきょう）しましょう。うわあ、見てください！完全に元通りになりましたし、外側からは修理した跡がほとんど分かりませんよ。
+                <div class="translation">（收到，正在壓著。一、二、三... 好的，現在感覺非常牢固了！我們按照妳的計畫，從內側用安全別針把它固定住吧。哇，妳看！它完美地歸位了，而且從外面幾乎看不出修補的痕跡。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                ［動かしてみて］わあ、完璧です！直す前よりも頑丈（がんじょう）になった気がします。［道具を返しながら］私のイベントを救っていただき、本当にありがとうございました！これ、ほんの気持ち（お礼）なんですけど、台湾のお土産のパイナップルケーキ（鳳梨酥）をどうぞ！よかったら食べてください。
+                <div class="translation">（*［測試活動度］* 哇，效果完美！感覺比之前還要更結實了。*［歸還工具］* 再次非常謝謝你拯救了我的一天！我可以送你們一些零食來表達我們的一點謝意嗎？我這裡有一些台灣的鳳梨酥。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レイヤーB：</span>
+                えっ、パイナップルケーキですか！？私これ大好きなんです！ありがとうございます！お役に立てて何よりです。コスプレ界隈はお互い様（おたがいさま）ですからね、困った時は助け合いです。午後のパレード、思いっきり楽しんできてくださいね！
+                <div class="translation">（噢，鳳梨酥嗎？我超愛的！非常謝謝你們！我也很高興能幫上忙。在 Cos 圈裡，我們本來就應該隨時互相照應。祝你們在遊行玩得非常開心！）</div>
+            </div>
+        </div>
+
+        <h3>📝 重要な単語帳</h3>
+        <table>
+            <tr>
+                <th>単語 / 表現</th>
+                <th>読み方</th>
+                <th>中文解釋</th>
+                <th>例文</th>
+            </tr>
+            <tr>
+                <td><strong>衣装崩れ</strong></td>
+                <td>いしょうくずれ</td>
+                <td>服裝部件損壞、脫落或鬆開</td>
+                <td>イベント中に衣装崩れが起きて焦った。</td>
+            </tr>
+            <tr>
+                <td><strong>瞬間接着剤</strong></td>
+                <td>しゅんかんせっちゃくざい</td>
+                <td>瞬間膠 / 快乾膠</td>
+                <td>造形が壊れたので瞬間接着剤で直す。</td>
+            </tr>
+            <tr>
+                <td><strong>安全ピン</strong></td>
+                <td>あんぜんぴん</td>
+                <td>安全別針</td>
+                <td>安全ピンを使って、ちぎれた衣装を固定する。</td>
+            </tr>
+            <tr>
+                <td><strong>お互い様</strong></td>
+                <td>おたがいさま</td>
+                <td>彼此彼此 / 互相照應 / 互相幫忙</td>
+                <td>困った時はお互い様ですから、気にしないで。</td>
+            </tr>
+            <tr>
+                <td><strong>頑丈</strong></td>
+                <td>がんじょう</td>
+                <td>牢固的 / 結實的</td>
+                <td>修理したおかげで、前より頑丈になった。</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    function switchLanguage(lang) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+        
+        if(lang === 'en') {
+            document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+            document.getElementById('section-en').classList.add('active');
+        } else {
+            document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+            document.getElementById('section-ja').classList.add('active');
+        }
+    }
+
+    function speakText(lang) {
+        window.speechSynthesis.cancel();
+
+        let textContainerId = lang === 'en' ? 'text-en' : 'text-ja';
+        let container = document.getElementById(textContainerId);
+        let lines = container.querySelectorAll('.dialogue-line');
+        
+        lines.forEach(line => {
+            let clone = line.cloneNode(true);
+            let trans = clone.querySelector('.translation');
+            let spk = clone.querySelector('.speaker');
+            if(trans) trans.remove();
+            if(spk) spk.remove();
+            
+            let pureText = clone.innerText.trim();
+            let utterance = new SpeechSynthesisUtterance(pureText);
+            
+            if (lang === 'en') {
+                utterance.lang = 'en-US';
+                utterance.rate = 0.88; 
+            } else {
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.92;
+            }
+            window.speechSynthesis.speak(utterance);
+        });
+    }
+</script>
+
+</body>
+</html>

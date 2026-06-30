@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 02: Strike a Cool Pose! / カッコいいポーズを決めよう！</title>
+    <style>
+        :root {
+            --primary-color: #38ef7d;
+            --secondary-color: #11998e;
+            --text-color: #2c3e50;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", "Helvetica", "Arial", "LiHei Pro", "Medium", "Microsoft JhengHei";
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 { color: var(--secondary-color); margin-bottom: 5px; }
+        h2 { color: var(--primary-color); font-size: 1.2rem; margin-top: 0; }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 2px solid var(--secondary-color);
+            background-color: transparent;
+            color: var(--secondary-color);
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .audio-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #e8f5e9;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .play-btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .play-btn:hover { opacity: 0.9; }
+
+        .dialogue-box {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fafafa;
+            margin-bottom: 25px;
+        }
+
+        .dialogue-line {
+            margin-bottom: 18px;
+            border-left: 4px solid #ddd;
+            padding-left: 15px;
+        }
+
+        .dialogue-line.highlight {
+            border-left-color: var(--primary-color);
+        }
+
+        .speaker {
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .translation {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th { background-color: #e8f5e9; color: var(--text-color); }
+
+        @media (max-width: 600px) {
+            th, td { padding: 8px; font-size: 0.9rem; }
+            .tab-btn { padding: 8px 15px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Unit 02: Strike a Cool Pose!</h1>
+        <h2>指導拍照動作、調整光線與攝影角度互動（3-5分鐘精實特輯）</h2>
+    </header>
+
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchLanguage('en')">English Version</button>
+        <button class="tab-btn" onclick="switchLanguage('ja')">日本語セクション</button>
+    </div>
+
+    <!-- ================= 英文版頁面 ================= -->
+    <div id="section-en" class="content-section active">
+        <div class="audio-control">
+            <span>🔊 課文朗讀 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('en')">播放完整英文對話</button>
+        </div>
+
+        <h3>🗣️ Full Dialogue: Directing and Posing at the Venue</h3>
+        <div class="dialogue-box" id="text-en">
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Alright, Sora! Let's find a slightly better spot for the photoshoot. The sun is directly overhead right now, which creates harsh shadows under your eyes. Could we move over to that shaded area next to the brick wall?
+                <div class="translation">（好的，Sora！我們來找一個稍微好一點的拍攝地點。現在太陽正懸在頭頂上，會在妳的眼睛下方造成很重的陰影。我們可以移到磚牆旁邊的那個陰影區嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Ah, that makes sense! Harsh lighting is a nightmare for cosplay photos. How is this spot? The light feels much softer here under the shadow of the building.
+                <div class="translation">（啊，有道理！強烈的直射光對 Cosplay 照片來說簡直是噩夢。這個位置怎麼樣？建築物陰影下的光線感覺柔和多了。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                This is perfect. The background is nice and clean too. First, let's start with a few full-body shots to capture your whole costume. Could you step forward a bit? Perfect. Now, please turn your body at a three-quarter angle toward the camera.
+                <div class="translation">（這裡完美。背景也很乾淨漂亮。首先，我們從幾張全身照開始，來捕捉妳整套服裝。可以稍微往前走一步嗎？完美。現在，請把身體轉向面對相機三分之二的角度。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Like this? Should I look directly into the lens, or should I look away to create a more dramatic, cinematic mood?
+                <div class="translation">（像這樣嗎？我應該直接直視鏡頭，還是把視線移開，好營造出一種更具戲劇感、電影感的氛圍呢？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                For the first few shots, looking away would be amazing. Try looking slightly over my left shoulder, as if you are gazing at a distant enemy. Yes! That's it! Now, raise your prop sword slightly and point it forward.
+                <div class="translation">（前幾張照片的話，把視線移開會非常棒。試著稍微看著我左肩的上方，就像妳正注視著遠處的敵人一樣。對！就是這樣！現在，稍微舉起妳的道具劍並指向前方。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Got it. Let me adjust my grip on the sword hilt. Is this height okay? I don't want the blade to block my face or cast a shadow on my expressions.
+                <div class="translation">（收到。讓我調整一下握劍柄的手勢。這個高度可以嗎？我不希望劍刃擋住我的臉，或在我的表情上投下陰影。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                That height is perfect. Hold that pose right there. I'm going to crouch down to get a low-angle shot. This will make you look much more heroic and powerful, like a true captain. One, two, three... click! Beautiful!
+                <div class="translation">（那個高度完美。保持那個姿勢不要動。我要蹲下來拍一張低角度的照片。這樣會讓妳看起來更具英雄氣概且強大，就像一個真正的隊長。一、二、三... 喀擦！漂亮！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Awesome! Let's do some close-up shots next. I want to make sure we capture the makeup details and the contact lenses clearly. Should I change my expression to a more serious one?
+                <div class="translation">（太棒了！接下來我們拍一些特寫鏡頭吧。我想確保能清晰拍下化妝的細節跟角膜變色片。我應該把表情換成更嚴肅的嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Yes, please! Give me a sharp, fierce glare. I will zoom in a bit for a tight headshot. Wait, your wig has a few stray hairs across your forehead. Could you tuck them behind your ear or smooth them down?
+                <div class="translation">（是的，麻煩了！給我一個銳利、兇悍的眼神。我會稍微放大鏡頭來拍一張緊湊的頭部特寫。等等，妳的假髮額前有幾根雜髮。可以把它們塞到耳後，或是撫平一下嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Oh, thanks for noticing! Wig maintenance during an outdoor summer con is so difficult. Is it better now?
+                <div class="translation">（噢，謝謝你注意到！夏天在室外場次維持假髮真的太困難了。現在有好一點了嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Much better! Perfect. Okay, fierce glare... look straight into the lens this time. Excellent! The reflection of the light in your contact lenses looks incredible. It really brings the character to life.
+                <div class="translation">（好多了！完美。好的，兇悍的眼神... 這次請直視鏡頭。太有張力了！光線在妳變色片裡的倒影看起來不可思議。真的把角色演活了。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Thank you! I practiced this expression in front of the mirror so many times. Can we try an action pose next? Like an over-the-shoulder look while pretending to run away or look back in surprise?
+                <div class="translation">（謝謝你！我在鏡子前練習這個表情好多次了。接下來我們可以試試看動作特寫嗎？像是假裝往前跑一邊回頭看，或者驚訝回眸的姿勢？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                I love that idea! It adds so much movement. For an over-the-shoulder shot, turn your back completely to me first. Then, twist your upper body and head back toward the camera on my count. I will use a fast shutter speed to capture the motion crisp and clear. Ready? Three, two, one, look back!
+                <div class="translation">（我超愛這個點子！這增添了好多躍動感。回眸特寫的話，請先完全背對我。然後在我倒數時，把上半身和頭扭轉回來看著相機。我會用高速快門來清晰捕捉這個動態。準備好了嗎？三、二、一，回頭！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                *Twists back and dynamic pose* Did you catch it? It felt really smooth on my end!
+                <div class="translation">（*轉身並擺出動態姿勢* 你有抓拍到嗎？我這邊感覺做得很順暢！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Yes, I got it! The composition is incredible, and your cape flared out perfectly behind you. This is definitely going to be one of the best shots of the day!
+                <div class="translation">（有，我拍到了！構圖太不可思議了，而且妳的披風在妳身後完美地飄揚開來。這絕對會成為今天拍得最好的照片之一！）</div>
+            </div>
+        </div>
+
+        <h3>📝 Key Vocabulary</h3>
+        <table>
+            <tr>
+                <th>Word / Phrase</th>
+                <th>中文解釋</th>
+                <th>例句</th>
+            </tr>
+            <tr>
+                <td><strong>Harsh shadows</strong></td>
+                <td>強烈/死黑的陰影</td>
+                <td>Harsh shadows can ruin a good portrait photo.</td>
+            </tr>
+            <tr>
+                <td><strong>Three-quarter angle</strong></td>
+                <td>三分之二斜側面角度</td>
+                <td>Turn at a three-quarter angle for a slimmer look.</td>
+            </tr>
+            <tr>
+                <td><strong>Low-angle shot</strong></td>
+                <td>低角度仰拍</td>
+                <td>A low-angle shot makes the subject look heroic.</td>
+            </tr>
+            <tr>
+                <td><strong>Close-up shot</strong></td>
+                <td>特寫鏡頭</td>
+                <td>We need a close-up shot of the intricate makeup.</td>
+            </tr>
+            <tr>
+                <td><strong>Over-the-shoulder look</strong></td>
+                <td>回眸 / 越肩回看姿勢</td>
+                <td>Give me a dramatic over-the-shoulder look.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ================= 日文版頁面 ================= -->
+    <div id="section-ja" class="content-section">
+        <div class="audio-control">
+            <span>🔊 本文朗読 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('ja')">日本語ダイアログを再生</button>
+        </div>
+
+        <h3>🗣️ 對話：会場でのポージングと撮影のディレクション</h3>
+        <div class="dialogue-box" id="text-ja">
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                よし、ソラさん！撮影にもう少し良いスポットを探しましょう。今は太陽が真上にあるので、目の下に強い影（トップ光の影）ができてしまいます。あのレンガの壁の隣にある日陰に移動しませんか？
+                <div class="translation">（好的，Sora！我們來找一個稍微好一點的拍攝地點。現在太陽正懸在頭頂上，會在妳的眼睛下方造成很重的陰影。我們可以移到磚牆旁邊的那個陰影區嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                あ、なるほど！直射日光の強い光はコスプレ撮影の天敵ですよね。この場所はどうですか？建物の影になっていて、光がすごく柔らかく感じます。
+                <div class="translation">（啊，有道理！強烈的直射光對 Cosplay 拍攝來說簡直是天敵。這個位置怎麼樣？建築物陰影下的光線感覺柔和多了。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                ここはバッチリです。背景もすっきりしていて綺麗ですね。まずは、衣装全体を収めるために全身写真から始めましょう。もう少し前に一歩進んでいただけますか？完璧です。では、体をカメラに対して斜め45度（ななめよんじゅうごど）に向けてください。
+                <div class="translation">（這裡完美。背景也很乾淨漂亮。首先，我們從幾張全身照開始，來捕捉妳整套服裝。可以稍微往前走一步嗎？完美。那麼，請把身體轉向面對相機斜45度的角度。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                こんな感じですか？目線はカメラのレンズを直視したほうがいいですか？それとも、目線を外してドラマチックでシネマティックな雰囲気にしますか？
+                <div class="translation">（像這樣嗎？視線應該直接看著相機鏡頭嗎？還是要把視線移開，好營造出一種更具戲劇感、電影感的氛圍呢？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                最初の数枚は、目線を外した方がすごくカッコいいと思います。僕の左肩の少し上を見るように、遠くの敵を見つめるイメージでお願いします。はい！それです！そのまま、道具の剣を少し持ち上げて、前方に突き出してください。
+                <div class="translation">（前幾張照片的話，把視線移開會非常帥氣。請想像看著我左肩的上方，就像妳正注視著遠處的敵人一樣。對！就是這樣！就那樣，稍微舉起道具劍並指向前方。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                わかりました。剣の柄（つか）の握り方を調整しますね。この高さで大丈夫ですか？刃（やいば）で顔が隠れたり、表情に影が落ちたりしないようにしたいです。
+                <div class="translation">（知道了。讓我調整一下劍柄的握法。這個高度可以嗎？我不希望劍刃擋住我的臉，或在我的表情上投下陰影。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                その高さで完璧です。そのポーズのままキープしてください。僕はしゃがんでローアングル（あおり構図）で撮りますね。こうすると、本当のキャプテンみたいに、より雄々しくて力強い印象になります。一、二、三…パシャ！綺麗です！
+                <div class="translation">（那個高度完美。請保持那個姿勢。我要蹲下來用低角度（仰拍構圖）來拍。這樣的話，會像真正的隊長一樣，給人更有英雄氣概且強大的印象。一、二、三... 喀擦！漂亮！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                やった！次はアップ（顔の特寫）を撮りましょう。メイクのディテールやカラコン（カラーコンタクト）がはっきり映るようにしたいです。表情はもっとシリアスな感じに変えたほうがいいですか？
+                <div class="translation">（太棒了！接下來拍特寫（臉部特寫）吧。我想確保能清晰拍下化妝的細節跟變色片。表情需要換成更嚴肅的感覺嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                はい、お願いします！鋭く強い眼差し（まなざし）をください。顔のアップ用に少しズームしますね。あ、ちょっと待ってください、おでこのところにウィッグのハネ毛（アホ毛）が数本かかっています。耳の後ろに挟むか、少し撫でて直せますか？
+                <div class="translation">（是的，麻煩了！請給我一個銳利且強烈的眼神。我會稍微放大鏡頭來拍臉部特寫。啊，請等一下，額頭的地方有幾根假髮的雜髮散落著。可以把它們塞到耳後，或是稍微撫平一下嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                あ、気づいてくれてありがとうございます！夏の屋外イベントでのウィッグの維持って本当に大変ですよね。これで直りましたか？
+                <div class="translation">（啊，謝謝你注意到！夏天在室外場次維持假髮真的很不容易呢。這樣有弄好了嗎？）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                バッチリ直りました！完璧です。では、シリアスな眼差しで…今度はレンズを直視してください。素晴らしい！カラコンに光の反射（キャッチライト）が綺麗に入っています。本当にキャラクターが生きているみたいです。
+                <div class="translation">（完全弄好了！完美。那麼，請用嚴肅的眼神... 這次請直視鏡頭。太讚了！變色片裡完美地捕捉到了眼神光。真的就像角色活生生出現一樣。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                ありがとうございます！鏡の前でこの表情を何度も練習したんです。次はアクションポーズを試してもいいですか？走って逃げている途中で、驚いて後ろを振り返るような「見返り美人」のポーズとか！
+                <div class="translation">（謝謝你！我在鏡子前練習這個表情好多次了。接下來可以試試動作姿勢嗎？像是跑到一半，驚訝地回頭看的「回眸」姿勢之類的！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                そのアイデア、最高ですね！躍動感がすごく出ます。振り返り（見返り）のカットなので、まずは僕に完全に背中を向けてください。そして、僕の合図で上半身と顔をカメラの方にひねってください。動きをブレずにクッキリ捉えるために、シャッタースピードを速くしますね。準備はいいですか？三、二、一、振り返って！
+                <div class="translation">（那個點子太棒了！非常有躍動感。因為是回眸的鏡頭，請先完全背對我。然後在我給信號時，把上半身和臉扭轉回來看相機。為了清晰捕捉動態而不產生晃動，我會把快門速度調快喔。準備好了嗎？三、二、一，回頭！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                （くるっと振り返って動的なポーズ）撮れましたか？自分の中ではすごくスムーズに動けました！
+                <div class="translation">（*轉身並擺出動態姿勢* 有拍到嗎？我自己覺得動得很順暢！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                はい、撮れました！構図（こうず）が素晴らしいですし、マントが後ろに綺麗に広がってフワッとなりましたよ。これは間違いなく今日のベストショットの1枚になりますね！
+                <div class="translation">（有，拍到了！構圖非常棒，而且披風在身後完美地飄揚開來。這毫無疑問會成為今天的最佳照片之一呢！）</div>
+            </div>
+        </div>
+
+        <h3>📝 重要な単語帳</h3>
+        <table>
+            <tr>
+                <th>単語 / 表現</th>
+                <th>読み方</th>
+                <th>中文解釋</th>
+                <th>例文</th>
+            </tr>
+            <tr>
+                <td><strong>目線を外す</strong></td>
+                <td>めせんをはずす</td>
+                <td>把視線移開不看鏡頭</td>
+                <td>カメラから少し目線を外してください。</td>
+            </tr>
+            <tr>
+                <td><strong>ローアングル</strong></td>
+                <td>ろーあんぐる</td>
+                <td>低角度（仰拍）</td>
+                <td>ローアングルで迫力のある写真を撮る。</td>
+            </tr>
+            <tr>
+                <td><strong>眼差し</strong></td>
+                <td>まなざし</td>
+                <td>眼神 / 視線</td>
+                <td>キャラクターのような鋭い眼差しをする。</td>
+            </tr>
+            <tr>
+                <td><strong>キャッチライト</strong></td>
+                <td>きゃっちらいと</td>
+                <td>眼神光（瞳孔中的反光）</td>
+                <td>瞳にキャッチライトが入ると生き生きする。</td>
+            </tr>
+            <tr>
+                <td><strong>ベストショット</strong></td>
+                <td>べすとしょっと</td>
+                <td>最佳照片 / 神照</td>
+                <td>これが今日のベストショットです！</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    function switchLanguage(lang) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+        
+        if(lang === 'en') {
+            document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+            document.getElementById('section-en').classList.add('active');
+        } else {
+            document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+            document.getElementById('section-ja').classList.add('active');
+        }
+    }
+
+    function speakText(lang) {
+        window.speechSynthesis.cancel();
+
+        let textContainerId = lang === 'en' ? 'text-en' : 'text-ja';
+        let container = document.getElementById(textContainerId);
+        let lines = container.querySelectorAll('.dialogue-line');
+        
+        lines.forEach(line => {
+            let clone = line.cloneNode(true);
+            let trans = clone.querySelector('.translation');
+            let spk = clone.querySelector('.speaker');
+            if(trans) trans.remove();
+            if(spk) spk.remove();
+            
+            let pureText = clone.innerText.trim();
+            let utterance = new SpeechSynthesisUtterance(pureText);
+            
+            if (lang === 'en') {
+                utterance.lang = 'en-US';
+                utterance.rate = 0.88; 
+            } else {
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.92;
+            }
+            window.speechSynthesis.speak(utterance);
+        });
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 10: Looking Forward to Meeting Again! / また会えるのを楽しみに！</title>
+    <style>
+        :root {
+            --primary-color: #fd79a8;
+            --secondary-color: #2d3436;
+            --text-color: #2c3e50;
+            --bg-color: #ffeaa7;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Helvetica Neue", "Helvetica", "Arial", "LiHei Pro", "Medium", "Microsoft JhengHei";
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #fffdf6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 { color: var(--primary-color); margin-bottom: 5px; }
+        h2 { color: var(--secondary-color); font-size: 1.2rem; margin-top: 0; }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 2px solid var(--primary-color);
+            background-color: transparent;
+            color: var(--primary-color);
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .audio-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff4cc;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .play-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .play-btn:hover { opacity: 0.9; }
+
+        .dialogue-box {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fafafa;
+            margin-bottom: 25px;
+        }
+
+        .dialogue-line {
+            margin-bottom: 18px;
+            border-left: 4px solid #ddd;
+            padding-left: 15px;
+        }
+
+        .dialogue-line.highlight {
+            border-left-color: var(--primary-color);
+        }
+
+        .speaker {
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .translation {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th { background-color: #fff4cc; color: var(--text-color); }
+
+        @media (max-width: 600px) {
+            th, td { padding: 8px; font-size: 0.9rem; }
+            .tab-btn { padding: 8px 15px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Unit 10: Looking Forward to Meeting Again!</h1>
+        <h2>活動最後一天的感性道別、交換最後伴手禮與約定下一場海外見面（3-5分鐘精實特輯）</h2>
+    </header>
+
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchLanguage('en')">English Version</button>
+        <button class="tab-btn" onclick="switchLanguage('ja')">日本語セクション</button>
+    </div>
+
+    <!-- ================= 英文版頁面 ================= -->
+    <div id="section-en" class="content-section active">
+        <div class="audio-control">
+            <span>🔊 課文朗讀 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('en')">播放完整英文對話</button>
+        </div>
+
+        <h3>🗣️ Full Dialogue: Saying Goodbye as WCS Comes to an End</h3>
+        <div class="dialogue-box" id="text-en">
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Wow, Sora, I can't believe the World Cosplay Summit is already over. It feels like we just met at Oasis 21 yesterday, but now the closing ceremony has finished, and people are starting to pack up. Time flew by so fast!
+                <div class="translation">（哇，Sora，我不敢相信世界 Cosplay 高峰會竟然已經結束了。感覺就像我們昨天才剛在綠洲 21 見面一樣，但現在閉幕式都結束了，大家也開始收拾行李了。時間過得真快！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                I know! It always feels a bit bittersweet when a major convention comes to an end. The last three days have been absolutely magical. I am so incredibly grateful that I got to meet you, Leo. Thank you again for taking such stunning photos of my captain costume. 
+                <div class="translation">（對啊！每當大型展會接近尾聲時，總會讓人覺得有點酸甜交織、依依不捨。過去這三天簡直像魔法一樣奇妙。我真的非常感激能認識你，Leo。再次謝謝你為我的隊長服裝拍了這麼好看的照片。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                The pleasure was all mine, Sora! Meeting you and collaborating on these photos was definitely the absolute highlight of my trip to Nagoya. By the way, I just sent you the link to the "Final_Edits" folder via DM. I managed to wrap up the vintage film color grading before checking out of my hotel this morning!
+                <div class="translation">（這也是我的榮幸，Sora！遇見妳並合作拍出這些照片，絕對是我這次名古屋之行最棒的高光時刻。順帶一提，我剛剛已經透過私訊把「Final_Edits」資料夾的連結傳給妳了。我今天早上從飯店退房前，好不容易把復古底片調色的精修做完了！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Oh, wow! *[Checks phone]* Oh, my goodness, Leo! These are breathtaking! The film grain and that high-contrast lighting we discussed look even better than I imagined. It feels so nostalgic yet powerful. I am definitely going to post these on X tonight with a huge thank-you note!
+                <div class="translation">（噢，哇！*［看手機］* 噢，我的天啊，Leo！這太美了，美到讓人屏息！底片顆粒感和我們討論的高對比光影效果比我想像的還要好。它感覺既懷舊又充滿張力。我今晚一定會把這些照片發到 X 上，並寫一篇大大的感謝文！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                I'm thrilled to hear that! Please tag me whenever you upload them. Since you are heading back to your hometown tomorrow and I am flying out tomorrow evening, I brought a small parting gift for you. It's a localized souvenir keychain from my country. I hope it reminds you of our fun photoshoot!
+                <div class="translation">（聽到妳這麼說我太開心了！妳上傳的時候記得標記我喔。既然妳明天就要回老家，而我明天晚上也要搭飛機回國了，我帶了一份小小的離別禮物送妳。這是我那邊的在地特色紀念鑰匙圈。希望它能讓妳想起我們這次快樂的外拍！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Oh, that is incredibly thoughtful of you! Thank you so much, I will treasure it. Wait, I have something for you too! This is a box of local Nagoya sweets called *Uirou*. It's a traditional chewy steamed cake. They are perfect to eat on the plane ride home!
+                <div class="translation">（噢，你真的太體貼了！非常謝謝你，我會好好珍惜它的。等一下，我也有東西要送你！這是一盒叫做「外郎糕」（Uirou）的名古屋在地甜點。這是一種傳統、口感軟糯的蒸糕。非常適合帶在飛機上吃！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Wow, thank you! I can't wait to try them. So, what is your next big cosplay project? Are you going to start engineering those massive black wings for the dark fantasy lord overseer costume we talked about earlier?
+                <div class="translation">（哇，謝謝妳！我迫不及待想嚐嚐看了。那麼，妳下一個大型 Cosplay 企劃是什麼？妳要開始動工設計我們之前聊到的、那個黑暗奇幻魔王總管服裝的巨大黑色翅膀了嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Yes, absolutely! I am going to buy the core PVC pipes and EVA foam as soon as I get home. I will keep posting my progress logs on social media. Since we already follow each other, you can track the entire construction process. 
+                <div class="translation">（對，沒錯！我一回到家就要去買核心的 PVC 管和 EVA 泡棉。我會持續在社群上發布我的進度日誌。既然我們都已經互追了，你就能追蹤整個製作過程了。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                I am definitely looking forward to seeing that. If you manage to finish it by winter or early next year, are you planning to attend any overseas anime conventions? For example, there are some amazing cosplay events in Taiwan during the winter and summer seasons. 
+                <div class="translation">（我絕對非常期待看到成果。如果妳能在冬天或明年年初完成它，妳有計畫去參加任何海外的動漫展嗎？例如，台灣在冬夏兩季都有一些非常棒的 Cosplay 活動喔。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Oh, I would love to visit Taiwan for a convention! I've seen videos of Taiwanese cosplay events online, and the energy there looks absolutely phenomenal. If I can arrange my schedule and finish the wings on time, I might actually fly over for an event next February!
+                <div class="translation">（噢，我很想去台灣參加展場！我在網上看過台灣 Cosplay 活動的影片，那裡的熱情與活力看起來真的很不可思議。如果我能安排好行程並準時做完翅膀，我搞不好明年二月真的會飛過去參加活動！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                That would be awesome! If you come over, please let me know. I would be honored to be your host, show you around the best local night markets, and of course, arrange another cinematic photoshoot for your new costume. 
+                <div class="translation">（那就太棒了！如果妳過來的話，請務必告訴我。我很榮幸能當妳的地陪，帶妳去逛最棒的在地夜市，當然，還要為妳的新服裝再安排一場電影感的拍攝。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                It's a promise then! Let's definitely make it happen. Well, my friends are calling me to join them for the final group photo. I guess this is goodbye for now. Have a safe flight back home tomorrow, Leo!
+                <div class="translation">（那就一言為定囉！我們一定要讓它實現。好啦，我的朋友在叫我過去拍最後的大合照了。看來今天得先說再見了。明天回程的飛機一路上平安順利喔，Leo！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">Leo:</span>
+                Thank you, Sora! It was a true privilege meeting you. Take care, good luck with the wing engineering, and let's stay in touch online. Until we meet again!
+                <div class="translation">（謝謝妳，Sora！認識妳真的是我的榮幸。保重，祝妳翅膀結構設計順利，我們網路上保持聯絡。期待下次再相見！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">Sora:</span>
+                Thank you! Until next time! Take care and keep taking beautiful photos! Bye-bye!
+                <div class="translation">（謝謝你！下次見囉！保重，並且要繼續拍出漂亮的照片喔！掰掰！）</div>
+            </div>
+        </div>
+
+        <h3>📝 Key Vocabulary</h3>
+        <table>
+            <tr>
+                <th>Word / Phrase</th>
+                <th>中文解釋</th>
+                <th>例句</th>
+            </tr>
+            <tr>
+                <td><strong>Bittersweet</strong></td>
+                <td>苦甜參半 / 依依不捨的</td>
+                <td>Saying goodbye to new friends is always bittersweet.</td>
+            </tr>
+            <tr>
+                <td><strong>Time flew by</strong></td>
+                <td>時間飛逝 / 時光荏苒</td>
+                <td>Time flew by so fast during the three-day convention.</td>
+            </tr>
+            <tr>
+                <td><strong>Parting gift</strong></td>
+                <td>離別禮物 / 告別贈禮</td>
+                <td>He gave her a traditional keychain as a parting gift.</td>
+            </tr>
+            <tr>
+                <td><strong>Progress log</strong></td>
+                <td>進度日誌 / 製作紀錄</td>
+                <td>She updates her cosplay progress log every weekend.</td>
+            </tr>
+            <tr>
+                --<td><strong>Until we meet again</strong></td>
+                <td>直到我們再次相見 / 期待再會</td>
+                <td>Goodbye for now, and until we meet again!</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ================= 日文版頁面 ================= -->
+    <div id="section-ja" class="content-section">
+        <div class="audio-control">
+            <span>🔊 本文朗読 (TTS 慢速學習)：</span>
+            <button class="play-btn" onclick="speakText('ja')">日本語ダイアログを再生</button>
+        </div>
+
+        <h3>🗣️ 對話：WCS最終日の感傷的なお別れ・次回の海外イベントでの再会約束</h3>
+        <div class="dialogue-box" id="text-ja">
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                うわあ、ソラさん。世界コスプレサミットがもう終わっちゃうなんて信じられません。なんだか昨日オアシス21で初めて会ったばかりのような気がするのに、もう閉会式（へいかいしき）も終わって、みんな片付けを始めていますね。本当に時間が経つのがあっという間でした！
+                <div class="translation">（哇，Sora，我不敢相信世界 Cosplay 高峰會竟然已經結束了。感覺就像我們昨天才剛在綠洲 21 見面一樣，但現在閉幕式都結束了，大家也開始收拾行李了。時間過得真快！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                本当にそうですね！大きなお祭り（イベント）が終わる時って、いつも少し寂しい（名残惜しい）気持ちになります。この3日間は、まさに魔法のような素晴らしい時間でした。レオさんに出会えて、私は本当に幸運で感謝の気持ちでいっぱいです。主将のコスプレをこんなに綺麗に撮ってくれて、改めてありがとうございました。
+                <div class="translation">（對啊！每當大型展會（祭典）接近尾聲時，總會讓人覺得有點寂寞、依依不捨。過去這三天簡直像魔法一樣奇妙。我真的非常幸運認識你、心裡充滿了感謝。再次謝謝你為我的隊長服裝拍了這麼好看的照片。）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                こちらこそですよ、ソラさん！ソラさんに出会って、こうして写真作品を一緒に作れたことは、間違いなく僕の名古屋旅行の「ベストハイライト（一番の思い出）」です。あ、そうそう、さっきDMで「Final_Edits」のフォルダのリンクを送りました。今朝ホテルをチェックアウトする前に、なんとかあのフィルム風の現像を仕上げたんです！
+                <div class="translation">（這也是我的榮幸，Sora！遇見妳並合作拍出這些照片，絕對是我這次名古屋之行最棒的高光時刻（最好的回憶）。啊，對了，我剛剛已經透過私訊把「Final_Edits」資料夾的連結傳給妳了。我今天早上從飯店退房前，好不容易把復古底片風格的現像修完了！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                えっ、本当ですか！？［スマホを確認する］うわぁぁ、すごいです、レオさん！息をのむほど美しいです！あの独特なフィルムの粒状感と、相談していた高コントラストな光影が、想像以上に素晴らしい仕上がりになっています。レトロなのに力強い。今夜絶対に、大きな感謝のメッセージと一緒にXに投稿（速報）しますね！
+                <div class="translation">（えっ、真的嗎！？*［看手機］* 哇啊啊，好厲害，Leo先生！美到讓人屏息！那種獨特的底片顆粒感和我們討論的高對比光影效果，比我想像的還要好。既復古又充滿力量。我今晚一定會把這些照片發到 X 上，並寫一篇大大的感謝文！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                そう言ってもらえて本当に嬉しいです！投稿したらぜひタグ付けしてくださいね。ソラさんは明日地元に帰られて、僕も明日の夜の便で帰国するので、ささやかな「お別れのプレセント（餞別）」を持ってきました。僕の国の限定キーホルダーです。今回の楽しかった撮影を思い出してもらえると嬉しいです！
+                <div class="translation">（聽到妳這麼說我真高興！妳上傳的時候記得標記我喔。既然妳明天就要回老家，而我明天晚上也要搭飛機回國了，我帶了一份小小的離別禮物（餞別）送妳。這是我那邊的限定鑰匙圈。希望它能讓妳想起我們這次快樂的外拍！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                わあ、なんて細やかなお気遣いでしょう！本当にありがとうございます、一生の宝物（たからもの）にしますね。あ、待ってください、私からもプレゼントがあるんです！これは名古屋名物の「ういろう」というお菓子です。伝統的なもちもちした食感の蒸し菓子なんですよ。帰りの飛行機の中でのおやつにぴったりです！
+                <div class="translation">（哇，多麼細緻的體貼啊！非常謝謝你，我會把它當作一生的寶物。等一下，我也有禮物要送你！這是一盒叫做「外郎糕」（Uirou）的名古屋名物甜點。這是一種傳統、口感軟糯的蒸點心。非常適合在回程的飛機上當點心吃！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                うわあ、ありがとうございます！食べるのがすごく楽しみです。ところで、ソラさんの次の大型コスプレ計画は何ですか？さっき話していた、ダークファンタジーの魔王総括キャラクターの「巨大な黒い翼」の設計（エンジニアリング）に、いよいよ着手（ちゃくしゅ）するんですか？
+                <div class="translation">（哇，謝謝妳！我迫不及待想嚐嚐看了。那麼，妳下一個大型 Cosplay 企劃是什麼？妳要開始動工著手我們之前聊到的、那個黑暗奇幻魔王總管角色的「巨大黑色翅膀」的結構設計了嗎？）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                はい、その通りです！家に帰ったらすぐに、骨組み（ほねぐみ）になるPVCパイプやEVAボードを買いに行きます。制作のプロセスは、これからもSNSで「進捗ログ」として発信し続けますね。すでにお互いフォローしているので、造形の全行程（ぜんこうてい）を見守っていてください！
+                <div class="translation">（對，沒錯！一回到家就要去買當作骨架的 PVC 管和 EVA 泡棉。製作過程我之後也會持續在 SNS 當作「進捗Log」發布。既然我們都已經互追了，請幫我見證造形的整個行程喔！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                それは絶対に楽しみに見守らせていただきます。もし冬か来年の初め頃までに完成したら、海外のアニメイベントへの参加などは考えていますか？例えば、台湾（たいわん）では冬と夏のシーズンに、すごく熱気のある大型コスプレイベントが開催されているんですよ。
+                <div class="translation">（我絕對會滿心期待地見證成果。如果妳能在冬天或明年年初完成它，妳有計畫去海外參加動漫活動之類的嗎？例如，台灣在冬夏兩季都有舉辦一些非常有熱氣的大型 Cosplay 活動喔。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                えっ、イベントで台湾にぜひ行ってみたいです！ネットで台湾のコスプレイベントの動画を見たことがあるんですけど、会場の熱量が本当に凄まじいですよね。スケジュールを調整して、もし翼が予定通りに完成したら、来年の2月のイベントに合わせて本当に飛んじゃうかもしれません！
+                <div class="translation">（欸，我很想因為活動去台灣看看！我在網上看過台灣 Cosplay 活動的影片，會場的熱量真的很驚人。如果能調整行程，而且翅膀按計畫完成的話，搞不好明年二月的活動我真的會飛過去喔！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                それは最高ですね！もし台湾に来る時は、絶対に僕に教えてくださいね。僕が案内役（地元のガイド）になって、美味しい夜市（よいち）を案内しますし、もちろん、新しい衣装のシネマティックな撮影をまたプロデュースさせてほしいです。
+                <div class="translation">（那就太棒了！如果妳來台灣，請務必告訴我。我來當妳的引路人（在地導遊），帶妳去逛美味的夜市，當然，還要讓我再為妳的新服裝策劃一場電影感的拍攝。）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                約束（やくそく）ですよ！絶対に実現させましょう。あっ、友達が最後の集合写真を撮るからって私を呼んでいます。それじゃあ、ひとまずここでお別れですね。レオさん、明日の帰りの飛行機、気をつけて帰ってくださいね！
+                <div class="translation">（那就約定好（約束）囉！我們一定要讓它實現。啊，朋友在叫我過去拍最後的集合大合照了。那麼，今天就在這裡先告一段落（お別れ）呢。Leo先生，明天回程的飛機一路上請小心喔！）</div>
+            </div>
+            <div class="dialogue-line highlight">
+                <span class="speaker">レオ：</span>
+                ありがとうございます、ソラさん！本当に出会えて光栄でした。お体に気をつけて、翼の造形も頑張ってくださいね。ネットでずっと繋がりましょう。それでは、また会える日まで！
+                <div class="translation">（謝謝妳，Sora！認識妳真的是我的榮幸。身體保重，祝妳翅膀造形順利，我們網路上一直保持聯絡。那麼，直到下次再相見的日子！）</div>
+            </div>
+            <div class="dialogue-line">
+                <span class="speaker">ソラ：</span>
+                ありがとうございます！また次の機会に！お元気で、これからも素敵な写真を撮り続けてくださいね！バイバイ！
+                <div class="translation">（謝謝你！下次有機會再見囉！祝你健康，並且要繼續拍出漂亮的照片喔！掰掰！）</div>
+            </div>
+        </div>
+
+        <h3>📝 重要な単語帳</h3>
+        <table>
+            <tr>
+                <th>単語 / 表現</th>
+                <th>読み方</th>
+                <th>中文解釋</th>
+                <th>例文</th>
+            </tr>
+            <tr>
+                <td><strong>名残惜しい</strong></td>
+                <td>なごりおしい</td>
+                <td>依依不捨的 / 令人留戀的</td>
+                <td>楽しかったイベントが終わるのは名残惜しい。</td>
+            </tr>
+            <tr>
+                <td><strong>あっという間</strong></td>
+                <td>あっというま</td>
+                <td>一眨眼 / 轉瞬之間</td>
+                <td>楽しい3日間は、あっという間に過ぎてしまった。</td>
+            </tr>
+            <tr>
+                <td><strong>ういろう</strong></td>
+                <td>ういろう</td>
+                <td>外郎糕（名古屋著名傳統軟糯蒸糕特產）</td>
+                <td>名古屋のお土産にういろうを買いました。</td>
+            </tr>
+            <tr>
+                <td><strong>約束</strong></td>
+                <td>やくそく</td>
+                <td>約定 / 承諾</td>
+                <td>来年、台湾で再会することを約束する。</td>
+            </tr>
+            <tr>
+                <td><strong>また会える日まで</strong></td>
+                <td>またあえるひまで</td>
+                <td>直到再相見之日（感性感傷道別語）</td>
+                <td>みんな、お元気で！また会える日まで！</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    function switchLanguage(lang) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+        
+        if(lang === 'en') {
+            document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+            document.getElementById('section-en').classList.add('active');
+        } else {
+            document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+            document.getElementById('section-ja').classList.add('active');
+        }
+    }
+
+    function speakText(lang) {
+        window.speechSynthesis.cancel();
+
+        let textContainerId = lang === 'en' ? 'text-en' : 'text-ja';
+        let container = document.getElementById(textContainerId);
+        let lines = container.querySelectorAll('.dialogue-line');
+        
+        lines.forEach(line => {
+            let clone = line.cloneNode(true);
+            let trans = clone.querySelector('.translation');
+            let spk = clone.querySelector('.speaker');
+            if(trans) trans.remove();
+            if(spk) spk.remove();
+            
+            let pureText = clone.innerText.trim();
+            let utterance = new SpeechSynthesisUtterance(pureText);
+            
+            if (lang === 'en') {
+                utterance.lang = 'en-US';
+                utterance.rate = 0.88; 
+            } else {
+                utterance.lang = 'ja-JP';
+                utterance.rate = 0.92;
+            }
+            window.speechSynthesis.speak(utterance);
+        });
+    }
+</script>
+
+</body>
+</html>
